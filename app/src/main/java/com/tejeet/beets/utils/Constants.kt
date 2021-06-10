@@ -1,4 +1,4 @@
-package com.app.tiktok.utils
+package com.tejeet.beets.utils
 
 object Constants {
     const val KEY_STORY_DATA = "KEY_STORY_DATA"

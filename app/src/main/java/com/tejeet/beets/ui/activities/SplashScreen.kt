@@ -1,4 +1,4 @@
-package com.tejeet.beets.UI.Activities
+package com.tejeet.beets.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -1,7 +1,7 @@
-package com.app.tiktok.repository
+package com.tejeet.beets.repository
 
 import com.app.tiktok.mock.Mock
-import com.app.tiktok.model.StoriesDataModel
+import com.tejeet.beets.model.StoriesDataModel
 import javax.inject.Inject
 
 class DataRepository @Inject constructor(private val mock: Mock) {

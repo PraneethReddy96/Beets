@@ -1,4 +1,4 @@
-package com.app.tiktok.ui.home.fragment
+package com.tejeet.beets.ui.home.fragment
 
 import android.os.Bundle
 import android.view.View
@@ -7,13 +7,13 @@ import androidx.lifecycle.Observer
 import androidx.work.Data
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
-import com.app.tiktok.base.BaseFragment
-import com.app.tiktok.model.ResultData
-import com.app.tiktok.model.StoriesDataModel
-import com.app.tiktok.ui.home.adapter.StoriesPagerAdapter
-import com.app.tiktok.ui.main.viewmodel.MainViewModel
-import com.app.tiktok.utils.Constants
-import com.app.tiktok.work.PreCachingService
+import com.tejeet.beets.base.BaseFragment
+import com.tejeet.beets.model.ResultData
+import com.tejeet.beets.model.StoriesDataModel
+import com.tejeet.beets.ui.home.adapter.StoriesPagerAdapter
+import com.tejeet.beets.ui.main.viewmodel.MainViewModel
+import com.tejeet.beets.utils.Constants
+import com.tejeet.beets.work.PreCachingService
 import com.tejeet.beets.R
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*

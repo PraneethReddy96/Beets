@@ -1,4 +1,4 @@
-package com.app.tiktok.ui.main.activity
+package com.tejeet.beets.ui.main.activity
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -7,8 +7,8 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.app.tiktok.base.BaseActivity
-import com.app.tiktok.ui.main.viewmodel.MainViewModel
+import com.tejeet.beets.base.BaseActivity
+import com.tejeet.beets.ui.main.viewmodel.MainViewModel
 import com.tejeet.beets.R
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*

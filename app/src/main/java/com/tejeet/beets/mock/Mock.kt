@@ -1,7 +1,7 @@
 package com.app.tiktok.mock
 
 import android.content.Context
-import com.app.tiktok.model.StoriesDataModel
+import com.tejeet.beets.model.StoriesDataModel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.tejeet.beets.R

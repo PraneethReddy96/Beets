@@ -1,12 +1,12 @@
-package com.app.tiktok.work
+package com.tejeet.beets.work
 
 import android.content.Context
 import android.net.Uri
 import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.app.tiktok.app.MyApp
-import com.app.tiktok.utils.Constants
+import com.tejeet.beets.app.MyApp
+import com.tejeet.beets.utils.Constants
 import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DataSpec
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory

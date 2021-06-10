@@ -1,4 +1,4 @@
-package com.app.tiktok.ui.story
+package com.tejeet.beets.ui.story
 
 import android.graphics.drawable.Drawable
 import android.net.Uri
@@ -6,10 +6,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.app.tiktok.app.MyApp
-import com.app.tiktok.model.StoriesDataModel
-import com.app.tiktok.ui.main.viewmodel.MainViewModel
-import com.app.tiktok.utils.*
+import com.tejeet.beets.app.MyApp
+import com.tejeet.beets.model.StoriesDataModel
+import com.tejeet.beets.ui.main.viewmodel.MainViewModel
 import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
@@ -19,6 +18,7 @@ import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.google.android.exoplayer2.upstream.cache.CacheDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.tejeet.beets.R
+import com.tejeet.beets.utils.*
 import kotlinx.android.synthetic.main.layout_story_view.*
 
 class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
