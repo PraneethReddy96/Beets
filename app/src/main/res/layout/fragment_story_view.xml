@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.story.StoryViewFragment">
 
+
     <com.google.android.exoplayer2.ui.PlayerView
         android:id="@+id/player_view_story"
         android:layout_width="0dp"
@@ -16,6 +17,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/options_container"
