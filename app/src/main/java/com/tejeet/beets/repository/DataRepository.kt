@@ -1,6 +1,6 @@
 package com.tejeet.beets.repository
 
-import com.app.tiktok.mock.Mock
+import com.tejeet.beets.mock.Mock
 import com.tejeet.beets.model.StoriesDataModel
 import javax.inject.Inject
 

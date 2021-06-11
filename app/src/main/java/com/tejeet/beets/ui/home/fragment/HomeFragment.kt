@@ -1,13 +1,15 @@
 package com.tejeet.beets.ui.home.fragment
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import androidx.fragment.app.activityViewModels
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.work.Data
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
-import com.tejeet.beets.base.BaseFragment
 import com.tejeet.beets.model.ResultData
 import com.tejeet.beets.model.StoriesDataModel
 import com.tejeet.beets.ui.home.adapter.StoriesPagerAdapter
@@ -15,19 +17,27 @@ import com.tejeet.beets.ui.main.viewmodel.MainViewModel
 import com.tejeet.beets.utils.Constants
 import com.tejeet.beets.work.PreCachingService
 import com.tejeet.beets.R
+import com.tejeet.beets.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_home.*
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment(R.layout.fragment_home) {
-    private val homeViewModel by activityViewModels<MainViewModel>()
+class HomeFragment : Fragment(R.layout.fragment_home) {
+
+    private var _binding: FragmentHomeBinding? = null
+    private val mainViewModel: MainViewModel by viewModels()
+    private val binding get() = _binding!!
+
 
     private lateinit var storiesPagerAdapter: StoriesPagerAdapter
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentHomeBinding.inflate(inflater,container,false)
 
-        val storiesData = homeViewModel.getDataList()
+        val storiesData = mainViewModel.getDataList()
 
         storiesData.observe(viewLifecycleOwner, Observer { value ->
             when(value) {
@@ -37,14 +47,17 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
                     if (!value.data.isNullOrEmpty()) {
                         val dataList = value.data
                         storiesPagerAdapter = StoriesPagerAdapter(this, dataList)
-                        view_pager_stories.adapter = storiesPagerAdapter
+                        binding.viewPagerStories.adapter = storiesPagerAdapter
 
                         startPreCaching(dataList)
                     }
                 }
             }
         })
+
+        return  binding.root
     }
+
 
     private fun startPreCaching(dataList: ArrayList<StoriesDataModel>) {
         val urlList = arrayOfNulls<String>(dataList.size)
@@ -56,5 +69,10 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
             .build()
         WorkManager.getInstance(requireContext())
             .enqueue(preCachingWork)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

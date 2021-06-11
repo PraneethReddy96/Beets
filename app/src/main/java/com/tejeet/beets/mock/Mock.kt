@@ -1,4 +1,4 @@
-package com.app.tiktok.mock
+package com.tejeet.beets.mock
 
 import android.content.Context
 import com.tejeet.beets.model.StoriesDataModel

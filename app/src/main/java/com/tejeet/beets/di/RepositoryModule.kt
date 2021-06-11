@@ -1,6 +1,6 @@
 package com.tejeet.beets.di
 
-import com.app.tiktok.mock.Mock
+import com.tejeet.beets.mock.Mock
 import com.tejeet.beets.repository.DataRepository
 import dagger.Module
 import dagger.Provides
