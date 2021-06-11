@@ -22,8 +22,8 @@ import kotlinx.coroutines.joinAll
 
 private const val TAG = "tag"
 
-class PreCachingService(appContext: Context, params: WorkerParameters) :
-    CoroutineWorker(appContext, params) {
+class PreCachingService(appContext: Context, params: WorkerParameters) : CoroutineWorker(appContext, params) {
+
     private var cachingJob: Deferred<Unit?>? = null
     private var cacheDataSourceFactory: CacheDataSourceFactory? = null
     private val simpleCache = MyApp.simpleCache
