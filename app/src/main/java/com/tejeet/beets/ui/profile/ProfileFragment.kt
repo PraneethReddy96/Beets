@@ -11,6 +11,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.tejeet.beets.R
 import com.tejeet.beets.databinding.FragmentProfileBinding
 import com.tejeet.beets.ui.main.viewmodel.MainViewModel
+import com.tejeet.beets.utils.Constants.showStatusAndNavBar
 import timber.log.Timber
 
 class ProfileFragment : Fragment() {
@@ -25,6 +26,8 @@ class ProfileFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentProfileBinding.inflate(inflater,container,false)
+
+        showStatusAndNavBar(requireActivity())
 
         binding.viewpager.apply {
 //            adapter = MyFragmentStateAdapter()

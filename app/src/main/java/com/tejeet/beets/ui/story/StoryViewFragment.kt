@@ -85,6 +85,7 @@ class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
 
         storyUrl = storieData?.storyUrl
         storyUrl?.let { prepareMedia(it) }
+
     }
 
     override fun onPause() {

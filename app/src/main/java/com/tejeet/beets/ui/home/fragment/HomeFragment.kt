@@ -46,10 +46,12 @@ class HomeFragment : Fragment() {
         storiesData.observe(viewLifecycleOwner, Observer { value ->
             when(value) {
                 is ResultData.Loading -> {
+                    binding.lottieLoaderAnimation.visibility = View.VISIBLE
                     Log.d(TAG, "Loading")
                 }
                 is ResultData.Success -> {
                     if (!value.data.isNullOrEmpty()) {
+                        binding.lottieLoaderAnimation.visibility = View.GONE
                         val dataList = value.data
                         storiesPagerAdapter = StoriesPagerAdapter(this, dataList)
                         binding.viewPagerStories.adapter = storiesPagerAdapter

@@ -2,6 +2,7 @@ package com.tejeet.beets.ui.main.activity
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
@@ -40,7 +41,10 @@ class MainActivity: AppCompatActivity(), NavController.OnDestinationChangedListe
         when (destination.id) {
             R.id.navigation_home -> {
 
-                //changeStatusBarColor(R.color.colorBlack)
+                window.apply {
+                    statusBarColor = getColor(R.color.colorBlack)
+                }
+
                 val colorDark = ContextCompat.getColorStateList(
                     this,
                     R.color.bottom_tab_selector_item_dark
@@ -58,7 +62,9 @@ class MainActivity: AppCompatActivity(), NavController.OnDestinationChangedListe
             }
             else -> {
 
-                //changeStatusBarColor(R.color.colorWhite)
+                window.apply {
+                    statusBarColor = getColor(R.color.colorWhite)
+                }
                 val colorDark = ContextCompat.getColorStateList(
                     this,
                     R.color.bottom_tab_selector_item_light
