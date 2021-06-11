@@ -1,6 +1,7 @@
 package com.tejeet.beets.ui.home.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.work.Data
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
+import com.tejeet.beets.data.model.StoriesData
 import com.tejeet.beets.model.ResultData
 import com.tejeet.beets.model.StoriesDataModel
 import com.tejeet.beets.ui.home.adapter.StoriesPagerAdapter
@@ -18,9 +20,12 @@ import com.tejeet.beets.utils.Constants
 import com.tejeet.beets.work.PreCachingService
 import com.tejeet.beets.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
+
+    private  val TAG = "tag"
 
     private var _binding: FragmentHomeBinding? = null
     private val mainViewModel: MainViewModel by viewModels()
@@ -41,6 +46,7 @@ class HomeFragment : Fragment() {
         storiesData.observe(viewLifecycleOwner, Observer { value ->
             when(value) {
                 is ResultData.Loading -> {
+                    Log.d(TAG, "Loading")
                 }
                 is ResultData.Success -> {
                     if (!value.data.isNullOrEmpty()) {
@@ -58,7 +64,7 @@ class HomeFragment : Fragment() {
     }
 
 
-    private fun startPreCaching(dataList: ArrayList<StoriesDataModel>) {
+    private fun startPreCaching(dataList: MutableList<StoriesData>) {
         val urlList = arrayOfNulls<String>(dataList.size)
         dataList.mapIndexed { index, storiesDataModel ->
             urlList[index] = storiesDataModel.storyUrl
