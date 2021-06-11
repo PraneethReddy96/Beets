@@ -4,14 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.tejeet.beets.base.BaseFragment
 import com.tejeet.beets.ui.discover.viewmodel.DiscoverViewModel
-import com.tejeet.beets.R
 import com.tejeet.beets.databinding.FragmentDiscoverBinding
-import com.tejeet.beets.databinding.FragmentHomeBinding
 
-class DiscoverFragment : BaseFragment(R.layout.fragment_discover) {
+class DiscoverFragment : Fragment() {
 
     private lateinit var viewModel: DiscoverViewModel
     private var _binding: FragmentDiscoverBinding? = null

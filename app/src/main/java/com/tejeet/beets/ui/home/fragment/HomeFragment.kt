@@ -16,12 +16,11 @@ import com.tejeet.beets.ui.home.adapter.StoriesPagerAdapter
 import com.tejeet.beets.ui.main.viewmodel.MainViewModel
 import com.tejeet.beets.utils.Constants
 import com.tejeet.beets.work.PreCachingService
-import com.tejeet.beets.R
 import com.tejeet.beets.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val mainViewModel: MainViewModel by viewModels()
