@@ -3,6 +3,7 @@ package com.tejeet.beets.ui.main.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
+import com.tejeet.beets.data.model.StoriesData
 import com.tejeet.beets.model.ResultData
 import com.tejeet.beets.model.StoriesDataModel
 import com.tejeet.beets.repository.DataRepository
@@ -13,7 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(private val dataRepository: DataRepository): ViewModel() {
-    fun getDataList(): LiveData<ResultData<ArrayList<StoriesDataModel>?>> {
+
+    fun getDataList(): LiveData<ResultData<MutableList<StoriesData>?>> {
         return flow {
             emit(ResultData.Loading())
             emit(ResultData.Success(dataRepository.getStoriesData()))

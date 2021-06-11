@@ -20,13 +20,14 @@ import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.google.android.exoplayer2.upstream.cache.CacheDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.tejeet.beets.R
+import com.tejeet.beets.data.model.StoriesData
 import com.tejeet.beets.databinding.FragmentStoryViewBinding
 import com.tejeet.beets.utils.*
 
 
 class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
     private var storyUrl: String? = null
-    private var storiesDataModel: StoriesDataModel? = null
+    private var storieData: StoriesData? = null
 
     private var simplePlayer: SimpleExoPlayer? = null
     private var cacheDataSourceFactory: CacheDataSourceFactory? = null
@@ -34,10 +35,10 @@ class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
     private var toPlayVideoPosition: Int = -1
 
     companion object {
-        fun newInstance(storiesDataModel: StoriesDataModel) = StoryViewFragment()
+        fun newInstance(storiesData: StoriesData) = StoryViewFragment()
             .apply {
                 arguments = Bundle().apply {
-                    putParcelable(Constants.KEY_STORY_DATA, storiesDataModel)
+                    putParcelable(Constants.KEY_STORY_DATA, storiesData)
                 }
             }
     }
@@ -54,7 +55,7 @@ class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
     ): View {
         _binding = FragmentStoryViewBinding.inflate(inflater,container,false)
 
-        storiesDataModel = arguments?.getParcelable(Constants.KEY_STORY_DATA)
+        storieData = arguments?.getParcelable(Constants.KEY_STORY_DATA)
         setData()
 
         return  binding.root
@@ -66,21 +67,23 @@ class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
     }
 
     private fun setData() {
-        binding.textViewAccountHandle.setTextOrHide(value = storiesDataModel?.userName)
-        binding.textViewVideoDescription.setTextOrHide(value = storiesDataModel?.storyDescription)
-        binding.textViewMusicTitle.setTextOrHide(value = storiesDataModel?.musicCoverTitle)
+        binding.textViewAccountHandle.setTextOrHide(value = storieData?.userName)
+        binding.textViewVideoDescription.setTextOrHide(value = storieData?.storyDescription)
+        binding.textViewMusicTitle.setTextOrHide(value = storieData?.musicCoverTitle)
 
-        binding.imageViewOptionCommentTitle.text = storiesDataModel?.commentsCount?.formatNumberAsReadableFormat()
-        binding.imageViewOptionLikeTitle.text = storiesDataModel?.likesCount?.formatNumberAsReadableFormat()
+        binding.imageViewOptionCommentTitle.text = "123"
 
-        binding.imageViewProfilePic.loadCenterCropImageFromUrl(storiesDataModel?.userProfilePicUrl)
+        binding.imageViewOptionLikeTitle.text = "1222"
+//            storieData?.likesCount?.formatNumberAsReadableFormat()
+
+        binding.imageViewProfilePic.loadCenterCropImageFromUrl(storieData?.userProfilePicUrl)
 
         binding.textViewMusicTitle.isSelected = true
 
         val simplePlayer = getPlayer()
         binding.playerViewStory.player = simplePlayer
 
-        storyUrl = storiesDataModel?.storyUrl
+        storyUrl = storieData?.storyUrl
         storyUrl?.let { prepareMedia(it) }
     }
 
