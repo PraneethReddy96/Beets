@@ -1,4 +1,4 @@
-package com.app.tiktok.ui.discover.viewmodel
+package com.tejeet.beets.ui.discover.viewmodel
 
 import androidx.lifecycle.ViewModel
 

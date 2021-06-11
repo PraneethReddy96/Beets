@@ -1,15 +1,16 @@
-package com.app.tiktok.ui.story
+package com.tejeet.beets.ui.story
 
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import com.app.tiktok.app.MyApp
-import com.app.tiktok.model.StoriesDataModel
-import com.app.tiktok.ui.main.viewmodel.MainViewModel
-import com.app.tiktok.utils.*
+import androidx.fragment.app.viewModels
+import com.tejeet.beets.app.MyApp
+import com.tejeet.beets.model.StoriesDataModel
+import com.tejeet.beets.ui.main.viewmodel.MainViewModel
 import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
@@ -19,7 +20,9 @@ import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.google.android.exoplayer2.upstream.cache.CacheDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.tejeet.beets.R
-import kotlinx.android.synthetic.main.layout_story_view.*
+import com.tejeet.beets.databinding.FragmentStoryViewBinding
+import com.tejeet.beets.utils.*
+
 
 class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
     private var storyUrl: String? = null
@@ -39,29 +42,43 @@ class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
             }
     }
 
-    private val viewModel by activityViewModels<MainViewModel>()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    private var _binding: FragmentStoryViewBinding? = null
+    private val mainViewModel: MainViewModel by viewModels()
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentStoryViewBinding.inflate(inflater,container,false)
 
         storiesDataModel = arguments?.getParcelable(Constants.KEY_STORY_DATA)
         setData()
+
+        return  binding.root
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
     }
 
     private fun setData() {
-        text_view_account_handle.setTextOrHide(value = storiesDataModel?.userName)
-        text_view_video_description.setTextOrHide(value = storiesDataModel?.storyDescription)
-        text_view_music_title.setTextOrHide(value = storiesDataModel?.musicCoverTitle)
+        binding.textViewAccountHandle.setTextOrHide(value = storiesDataModel?.userName)
+        binding.textViewVideoDescription.setTextOrHide(value = storiesDataModel?.storyDescription)
+        binding.textViewMusicTitle.setTextOrHide(value = storiesDataModel?.musicCoverTitle)
 
-        image_view_option_comment_title?.text = storiesDataModel?.commentsCount?.formatNumberAsReadableFormat()
-        image_view_option_like_title?.text = storiesDataModel?.likesCount?.formatNumberAsReadableFormat()
+        binding.imageViewOptionCommentTitle.text = storiesDataModel?.commentsCount?.formatNumberAsReadableFormat()
+        binding.imageViewOptionLikeTitle.text = storiesDataModel?.likesCount?.formatNumberAsReadableFormat()
 
-        image_view_profile_pic?.loadCenterCropImageFromUrl(storiesDataModel?.userProfilePicUrl)
+        binding.imageViewProfilePic.loadCenterCropImageFromUrl(storiesDataModel?.userProfilePicUrl)
 
-        text_view_music_title.isSelected = true
+        binding.textViewMusicTitle.isSelected = true
 
         val simplePlayer = getPlayer()
-        player_view_story.player = simplePlayer
+        binding.playerViewStory.player = simplePlayer
 
         storyUrl = storiesDataModel?.storyUrl
         storyUrl?.let { prepareMedia(it) }

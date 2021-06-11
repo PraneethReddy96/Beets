@@ -1,7 +1,7 @@
-package com.app.tiktok.di
+package com.tejeet.beets.di
 
 import android.content.Context
-import com.app.tiktok.mock.Mock
+import com.tejeet.beets.mock.Mock
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

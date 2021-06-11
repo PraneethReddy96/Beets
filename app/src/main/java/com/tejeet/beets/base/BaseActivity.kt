@@ -1,4 +1,4 @@
-package com.app.tiktok.base
+package com.tejeet.beets.base
 
 import android.graphics.Color
 import android.os.Bundle

@@ -1,8 +1,9 @@
-package com.app.tiktok.utils
+package com.tejeet.beets.utils
 
 import android.util.Log
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.view.isVisible
+import com.app.tiktok.utils.Utility
 
 fun AppCompatTextView.setTextOrHide(value: String? = null) {
     if (!value.isNullOrBlank()) {

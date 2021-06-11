@@ -1,4 +1,4 @@
-package com.app.tiktok.app
+package com.tejeet.beets.app
 
 import android.app.Application
 import android.content.Context

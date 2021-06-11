@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.app.tiktok.ui.home.fragment.HomeFragment"
+        android:name="com.tejeet.beets.ui.home.fragment.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/navigation_discovery"
-        android:name="com.app.tiktok.ui.discover.fragment.DiscoverFragment"
+        android:name="com.tejeet.beets.ui.discover.fragment.DiscoverFragment"
         android:label="fragment_discover"
         tools:layout="@layout/fragment_discover" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.app.tiktok.model
+package com.tejeet.beets.model
 
 sealed class ResultData<out T> {
     data class Loading(val nothing: Nothing? = null): ResultData<Nothing?>()

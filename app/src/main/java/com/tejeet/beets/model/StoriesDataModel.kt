@@ -1,4 +1,4 @@
-package com.app.tiktok.model
+package com.tejeet.beets.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

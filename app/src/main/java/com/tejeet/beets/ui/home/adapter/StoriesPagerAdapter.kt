@@ -1,9 +1,9 @@
-package com.app.tiktok.ui.home.adapter
+package com.tejeet.beets.ui.home.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.app.tiktok.model.StoriesDataModel
-import com.app.tiktok.ui.story.StoryViewFragment
+import com.tejeet.beets.model.StoriesDataModel
+import com.tejeet.beets.ui.story.StoryViewFragment
 
 class StoriesPagerAdapter(fragment: Fragment, val dataList: MutableList<StoriesDataModel> = mutableListOf()) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int {
