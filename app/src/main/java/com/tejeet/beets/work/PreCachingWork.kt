@@ -20,7 +20,8 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.joinAll
 
-private const val TAG = "PreCachingService"
+private const val TAG = "tag"
+
 class PreCachingService(appContext: Context, params: WorkerParameters) :
     CoroutineWorker(appContext, params) {
     private var cachingJob: Deferred<Unit?>? = null

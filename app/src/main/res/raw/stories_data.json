@@ -55,6 +55,7 @@
     "commentsCount" : 5544,
     "contentWarning" : null
   },
+
   {
     "storyId" : 5,
     "storyUrl" : "https://assets.mixkit.co/videos/preview/mixkit-happy-and-funny-girl-with-a-stuffed-santa-claus-39748-large.mp4",
@@ -69,4 +70,34 @@
     "commentsCount" : 25,
     "contentWarning" : null
   }
+  ,
+  {
+    "storyId" : 5,
+    "storyUrl" : "https://assets.mixkit.co/videos/preview/mixkit-a-couple-painting-a-wall-blue-2307-large.mp4",
+    "storyThumbUrl" : "https://res.cloudinary.com/mydatacloud/video/upload/v1592819402/stories/Pexels_Videos_2035391_chghyf.jpg",
+    "storyDescription" : "#besafe #covid-19 #corona #motivation #life #lockdown",
+    "musicCoverTitle" : "God's Plan",
+    "musicCoverImageLink" : null,
+    "userId" : 4,
+    "userProfilePicUrl" : "https://res.cloudinary.com/mydatacloud/image/upload/v1592823557/profiles/user_2_dzncxa.jpg",
+    "userName" : "@Stark",
+    "likesCount" : 220,
+    "commentsCount" : 25,
+    "contentWarning" : null
+  },
+  {
+    "storyId" : 5,
+    "storyUrl" : "https://v19.tiktokcdn.com/9709362a7622b664c71426fb62bd8dd5/60c28696/video/tos/useast2a/tos-useast2a-ve-0068c004/b47013a080fc4c03b61433123ea4e436/?a=1180&br=4600&bt=2300&cd=0%7C0%7C0&ch=0&cr=0&cs=0&cv=1&dr=0&ds=6&er=&l=20210610153921010115151042131CEAF9&lr=&mime_type=video_mp4&net=0&pl=0&qs=0&rc=amVtdWhrcGs6NDMzZDczM0ApOTwzaGlpNjw6NztkZzw7OWdhZ282MHNqbmBgLS00MTZzczRgYS5eY2MzMWEvYmMxMjU6Yw%3D%3D&vl=&vr=",
+    "storyThumbUrl" : "https://res.cloudinary.com/mydatacloud/video/upload/v1592819402/stories/Pexels_Videos_2035391_chghyf.jpg",
+    "storyDescription" : "#besafe #covid-19 #corona #motivation #life #lockdown",
+    "musicCoverTitle" : "God's Plan",
+    "musicCoverImageLink" : null,
+    "userId" : 4,
+    "userProfilePicUrl" : "https://res.cloudinary.com/mydatacloud/image/upload/v1592823557/profiles/user_2_dzncxa.jpg",
+    "userName" : "@Stark",
+    "likesCount" : 220,
+    "commentsCount" : 25,
+    "contentWarning" : null
+  }
+
 ]
