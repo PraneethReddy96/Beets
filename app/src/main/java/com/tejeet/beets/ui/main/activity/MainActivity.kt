@@ -18,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity: AppCompatActivity(), NavController.OnDestinationChangedListener {
 
     private val mainViewModel: MainViewModel by viewModels()
-    private lateinit var binding:ActivityMainBinding
+    lateinit var binding:ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

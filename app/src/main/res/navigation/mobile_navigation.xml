@@ -20,4 +20,9 @@
         android:name="com.tejeet.beets.ui.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/navigation_record"
+        android:name="com.tejeet.beets.ui.upload.record.RecordVideoFragment"
+        android:label="fragment_record"
+        tools:layout="@layout/fragment_record_video" />
 </navigation>

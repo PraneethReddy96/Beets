@@ -7,6 +7,7 @@ import com.google.android.exoplayer2.database.ExoDatabaseProvider
 import com.google.android.exoplayer2.upstream.cache.LeastRecentlyUsedCacheEvictor
 import com.google.android.exoplayer2.upstream.cache.SimpleCache
 import dagger.hilt.android.HiltAndroidApp
+import timber.log.Timber
 
 @HiltAndroidApp
 class MyApp: Application() {
@@ -17,6 +18,10 @@ class MyApp: Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        // Init Timber for logging
+        Timber.plant(Timber.DebugTree())
+
         context = this
 
         val leastRecentlyUsedCacheEvictor = LeastRecentlyUsedCacheEvictor(90 * 1024 * 1024)

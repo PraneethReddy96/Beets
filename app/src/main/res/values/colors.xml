@@ -12,4 +12,8 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="light_grey">#E8E6E6</color>
     <color name="medium_grey">#7A7777</color>
+    <color name="pinkBtnBackground">#FF0051</color>
+    <color name="grey_button_background">#E1DCDC</color>
+    <color name="super_light_grey">#F6F6F6</color>
+    <color name="light_white">#E8E6E6</color>
 </resources>

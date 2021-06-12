@@ -38,6 +38,7 @@ android {
 
     buildFeatures {
         viewBinding true
+        dataBinding true
     }
 
 
@@ -108,6 +109,17 @@ dependencies {
     // CircleImageView
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    // CameraView
+    implementation 'com.otaliastudios:cameraview:2.6.4'
+
+    // SwipeToRefresh
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+    // Dexter
+    implementation 'com.karumi:dexter:6.2.2'
+
+    // SwipeToRefresh
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
 }
 
