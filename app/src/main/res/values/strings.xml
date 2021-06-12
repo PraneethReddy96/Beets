@@ -19,4 +19,6 @@
     <string name="my_videos">My Videos</string>
     <string name="my_private_videos">My Private Videos</string>
     <string name="my_liked_videos">My Liked Videos</string>
+    <string name="swipe_up">Swipe up</string>
+    <string name="personalize">Videos are personalized for you based on what you watch, like and share.</string>
 </resources>

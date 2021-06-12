@@ -9,7 +9,6 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
-
     <application
         android:name=".app.MyApp"
         android:allowBackup="true"
@@ -19,22 +18,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".ui.interests.activity.SwipeActivity"></activity>
+        <activity android:name=".ui.interests.activity.MainActivity" />
         <activity
             android:name=".ui.activities.SplashScreen"
-            android:theme="@style/SplashTheme"
-            >
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.main.activity.MainActivity"
             android:label="Tik Tok" />
-
     </application>
 
 </manifest>
