@@ -66,6 +66,7 @@ class RecordVideoFragment : Fragment() {
 
         initCameraView()
         changeUIBasedOnPermissions()
+        turnOnCameraPreview()
 
         recordViewModel.localVideo.observe(viewLifecycleOwner, Observer { localVideo ->
 
