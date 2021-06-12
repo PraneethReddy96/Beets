@@ -25,4 +25,9 @@
         android:name="com.tejeet.beets.ui.upload.record.RecordVideoFragment"
         android:label="fragment_record"
         tools:layout="@layout/fragment_record_video" />
+    <fragment
+        android:id="@+id/navigation_preview"
+        android:name="com.tejeet.beets.ui.upload.preview_video.PreviewFragment"
+        android:label="fragment_preview"
+        tools:layout="@layout/fragment_preview" />
 </navigation>
