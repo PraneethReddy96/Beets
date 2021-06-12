@@ -27,6 +27,7 @@
         android:layout_below="@id/tvSwipeUp"
         android:layout_marginTop="@dimen/dp_5"
         android:paddingLeft="@dimen/dp_20"
+        android:paddingRight="@dimen/dp_4"
         android:text="@string/personalize"
         android:paddingBottom="@dimen/dp_10"
         android:textColor="@color/grey"
