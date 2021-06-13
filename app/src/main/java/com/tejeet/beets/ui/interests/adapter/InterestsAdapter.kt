@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.tejeet.beets.R
@@ -39,6 +40,7 @@ class InterestAdapter(var interestslist: MutableList<Interests>?, var itemClickL
 
 class InterestsViewHolder(itemView: View, itemClickListener: ItemClickListener) :
     RecyclerView.ViewHolder(itemView) {
+    private val cardInterest:CardView
     private val tvActivity: TextView
     private val ivTick :ImageView
     private val llContainer :LinearLayout
@@ -49,11 +51,13 @@ class InterestsViewHolder(itemView: View, itemClickListener: ItemClickListener) 
         if (interests.isSelected) {
 
            llContainer.setBackgroundColor(ContextCompat.getColor(llContainer.context,R.color.pink))
+           cardInterest.setBackgroundColor(ContextCompat.getColor(cardInterest.context,R.color.pink))
             tvActivity.setBackgroundColor(ContextCompat.getColor(tvActivity.context, R.color.pink))
             tvActivity.setTextColor(ContextCompat.getColor(tvActivity.context, R.color.colorWhite))
             ivTick.visibility =View.VISIBLE
         } else {
             llContainer.setBackgroundColor(ContextCompat.getColor(llContainer.context,R.color.colorWhite))
+            cardInterest.setBackgroundColor(ContextCompat.getColor(cardInterest.context,R.color.colorWhite))
             ivTick.visibility=View.INVISIBLE
             tvActivity.setTextColor(ContextCompat.getColor(tvActivity.context, R.color.colorBlack))
             tvActivity.setBackgroundColor(ContextCompat.getColor(tvActivity.context, R.color.colorWhite))
@@ -68,6 +72,7 @@ class InterestsViewHolder(itemView: View, itemClickListener: ItemClickListener) 
         tvActivity = itemView.findViewById(R.id.tvInterests)
         ivTick=itemView.findViewById(R.id.ivTick)
         llContainer=itemView.findViewById(R.id.llConatiner)
+        cardInterest = itemView.findViewById(R.id.card_interest)
 
     }
 }

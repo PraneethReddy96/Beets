@@ -5,14 +5,30 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.tejeet.beets.R
+import androidx.navigation.fragment.navArgs
+import com.tejeet.beets.data.model.upload.LocalVideo
 import com.tejeet.beets.databinding.FragmentPreviewBinding
-import com.tejeet.beets.databinding.FragmentRecordVideoBinding
+import com.tejeet.beets.exoplayer.Player
+
 
 class PreviewFragment : Fragment() {
 
     private var _binding: FragmentPreviewBinding? = null
     private val binding get() = _binding!!
+    private val args by navArgs<PreviewFragmentArgs>()
+    private val localVideo by lazy { args.localVideo }
+
+    private val player by lazy {
+//         Player(
+//            simpleExoplayerView = binding.playerView,
+//            playBtn = binding.playBtn,
+//            context = requireContext(),
+//            url = localVideo.filePath,
+//            onVideoEnded = {
+//                it.restartPlayer()
+//            }
+//        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

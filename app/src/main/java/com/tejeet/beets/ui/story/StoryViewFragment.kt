@@ -108,18 +108,18 @@ class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
             logError("onPlayerStateChanged playbackState: $playbackState")
         }
 
-        override fun onPlayerError(error: com.google.android.exoplayer2.ExoPlaybackException?) {
-            super.onPlayerError(error)
-        }
+//        override fun onPlayerError(error: com.google.android.exoplayer2.ExoPlaybackException?) {
+//            super.onPlayerError(error)
+//        }
     }
 
     private fun prepareVideoPlayer() {
-        simplePlayer = ExoPlayerFactory.newSimpleInstance(context)
-        cacheDataSourceFactory = CacheDataSourceFactory(simpleCache,
-            DefaultHttpDataSourceFactory(
-                Util.getUserAgent(context,
-                "exo"))
-        )
+//        simplePlayer = ExoPlayerFactory.newSimpleInstance(context)
+//        cacheDataSourceFactory = CacheDataSourceFactory(simpleCache,
+//            DefaultHttpDataSourceFactory(
+//                Util.getUserAgent(context,
+//                "exo"))
+//        )
     }
 
     private fun getPlayer(): SimpleExoPlayer? {
@@ -134,12 +134,12 @@ class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
 
         val uri = Uri.parse(linkUrl)
 
-        val mediaSource = ProgressiveMediaSource.Factory(cacheDataSourceFactory).createMediaSource(uri)
+//        val mediaSource = ProgressiveMediaSource.Factory(cacheDataSourceFactory).createMediaSource(uri)
 
-        simplePlayer?.prepare(mediaSource, true, true)
+//        simplePlayer?.prepare(mediaSource, true, true)
         simplePlayer?.repeatMode = Player.REPEAT_MODE_ONE
         simplePlayer?.playWhenReady = true
-        simplePlayer?.addListener(playerCallback)
+//        simplePlayer?.addListener(playerCallback)
 
         toPlayVideoPosition = -1
     }

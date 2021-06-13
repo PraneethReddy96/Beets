@@ -72,10 +72,9 @@ class RecordVideoFragment : Fragment() {
 
             localVideo?.let {
 
-//                findNavController().navigate(
-//                    RecordVideoFragmentDirections
-//                        .actionRecordVideoFragmentToPreviewVideoFragment(localVideo)
-//                )
+                findNavController().navigate(
+                    RecordVideoFragmentDirections.actionNavigationRecordToNavigationPreview(localVideo)
+                )
 
                 recordViewModel.resetLocalVideo()
             }
