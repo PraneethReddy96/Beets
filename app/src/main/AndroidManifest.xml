@@ -22,7 +22,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".ui.interests.activity.SwipeActivity"></activity>
-        <activity android:name=".ui.interests.activity.MainActivity" />
+        <activity android:name=".ui.interests.activity.InterestsActivity" />
         <activity
             android:name=".ui.activities.SplashScreen"
             android:theme="@style/SplashTheme">

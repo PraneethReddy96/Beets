@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.messaging.FirebaseMessaging
-import com.tejeet.beets.network.MyMessegingService
-import com.tejeet.beets.ui.interests.activity.MainActivity
+import com.tejeet.beets.data.constant.AppPreferences
+import com.tejeet.beets.ui.interests.activity.InterestsActivity
+import com.tejeet.beets.ui.main.activity.MainActivity
 
 class SplashScreen : AppCompatActivity() {
     private val TAG = "tag"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
        // setContentView(R.layout.activity_splash_screen)
@@ -18,9 +20,22 @@ class SplashScreen : AppCompatActivity() {
 
         getToken()
         initApp()
-        startActivity(Intent(this, MainActivity::class.java))
 
-        finish()
+        AppPreferences.init(this)
+
+        if (AppPreferences.is_FirstTime.equals("NO")){
+            AppPreferences.is_FirstTime = "YES"
+            startActivity(Intent(this, MainActivity::class.java))
+
+            finish()
+
+
+        }else{
+            startActivity(Intent(this, InterestsActivity::class.java))
+
+            finish()
+        }
+
     }
 
     fun onTokenRefresh(){

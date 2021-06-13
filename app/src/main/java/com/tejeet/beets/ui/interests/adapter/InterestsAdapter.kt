@@ -51,13 +51,11 @@ class InterestsViewHolder(itemView: View, itemClickListener: ItemClickListener) 
         if (interests.isSelected) {
 
            llContainer.setBackgroundColor(ContextCompat.getColor(llContainer.context,R.color.pink))
-           cardInterest.setBackgroundColor(ContextCompat.getColor(cardInterest.context,R.color.pink))
             tvActivity.setBackgroundColor(ContextCompat.getColor(tvActivity.context, R.color.pink))
             tvActivity.setTextColor(ContextCompat.getColor(tvActivity.context, R.color.colorWhite))
             ivTick.visibility =View.VISIBLE
         } else {
             llContainer.setBackgroundColor(ContextCompat.getColor(llContainer.context,R.color.colorWhite))
-            cardInterest.setBackgroundColor(ContextCompat.getColor(cardInterest.context,R.color.colorWhite))
             ivTick.visibility=View.INVISIBLE
             tvActivity.setTextColor(ContextCompat.getColor(tvActivity.context, R.color.colorBlack))
             tvActivity.setBackgroundColor(ContextCompat.getColor(tvActivity.context, R.color.colorWhite))
