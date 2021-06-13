@@ -30,7 +30,7 @@ class RecordViewModel @Inject constructor(
     private var timeCreated by Delegates.notNull<Long>()
     private var localRecordLocation: LocalRecordLocation? = null
 
-    private val _localVideo = MutableLiveData<LocalVideo?>()
+    private val _localVideo = MutableLiveData<LocalVideo>()
     val localVideo: LiveData<LocalVideo?> = _localVideo
 
     private val _showLittleSpace = MutableLiveData(false)
@@ -119,7 +119,7 @@ class RecordViewModel @Inject constructor(
     }
 
     fun resetLocalVideo() {
-        _localVideo.value = null
+//        _localVideo.value = null
     }
 
     fun resetShowLittleLayout() {

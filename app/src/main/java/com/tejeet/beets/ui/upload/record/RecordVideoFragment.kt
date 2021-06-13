@@ -1,12 +1,9 @@
 package com.tejeet.beets.ui.upload.record
-
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -68,9 +65,10 @@ class RecordVideoFragment : Fragment() {
         changeUIBasedOnPermissions()
         turnOnCameraPreview()
 
-        recordViewModel.localVideo.observe(viewLifecycleOwner, Observer { localVideo ->
+        recordViewModel.localVideo.observe(viewLifecycleOwner, { localVideo ->
 
             localVideo?.let {
+
 
                 findNavController().navigate(
                     RecordVideoFragmentDirections.actionNavigationRecordToNavigationPreview(localVideo)
@@ -87,9 +85,11 @@ class RecordVideoFragment : Fragment() {
             findNavController().popBackStack()
         }
 
-        binding.uploadImageBtn.setOnClickListener {
-//            findNavController().navigate(R.id.action_recordVideoFragment_to_createVideoFragment)
-        }
+//        binding.uploadImageBtn.setOnClickListener {
+//            findNavController().navigate(
+//                RecordVideoFragmentDirections.actionNavigationRecordToNavigationPreview()
+//            )
+//        }
 
         binding.startRecordingBtn.setOnClickListener {
 
@@ -107,6 +107,7 @@ class RecordVideoFragment : Fragment() {
         binding.pauseRecordingBtn.setOnClickListener {
             cameraView.stopVideo()
             recordViewModel.pauseVideo()
+
         }
 
         binding.finishRecordingBtn.setOnClickListener {

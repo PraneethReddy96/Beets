@@ -6,9 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
+import com.google.android.exoplayer2.SimpleExoPlayer
+import com.tejeet.beets.R
 import com.tejeet.beets.data.model.upload.LocalVideo
 import com.tejeet.beets.databinding.FragmentPreviewBinding
 import com.tejeet.beets.exoplayer.Player
+import com.tejeet.beets.utils.BottomNavViewUtils.hideBottomNavBar
+import com.tejeet.beets.utils.SystemBarColors
+import com.tejeet.beets.utils.ViewUtils
 
 
 class PreviewFragment : Fragment() {
@@ -16,27 +21,34 @@ class PreviewFragment : Fragment() {
     private var _binding: FragmentPreviewBinding? = null
     private val binding get() = _binding!!
     private val args by navArgs<PreviewFragmentArgs>()
-    private val localVideo by lazy { args.localVideo }
+    lateinit var player: Player
 
-    private val player by lazy {
-//         Player(
-//            simpleExoplayerView = binding.playerView,
-//            playBtn = binding.playBtn,
-//            context = requireContext(),
-//            url = localVideo.filePath,
-//            onVideoEnded = {
-//                it.restartPlayer()
-//            }
-//        )
-    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
+
         _binding =  FragmentPreviewBinding.inflate(inflater, container, false)
 
+        player =
+            Player(
+                simpleExoplayerView = binding.playerView,
+                playBtn = binding.playBtn,
+                context = requireContext(),
+                url = args.localVideo.filePath,
+                onVideoEnded = {
+                    it.restartPlayer()
+                }
+            )
+
+        binding.nextBtn.setOnClickListener {
+//            findNavController().navigate(
+//                PreviewVideoFragmentDirections
+//                    .actionPreviewVideoFragmentToPostVideoFragment(localVideo)
+//            )
+        }
 
         return binding.root
     }
@@ -46,5 +58,23 @@ class PreviewFragment : Fragment() {
         _binding = null
     }
 
+    override fun onResume() {
+        super.onResume()
+        player.resumePlayer()
+        ViewUtils.changeSystemBars(activity, SystemBarColors.DARK)
+        ViewUtils.changeSystemNavigationBarColor(requireActivity(), R.color.colorBlack)
+        ViewUtils.hideStatusBar(requireActivity())
+        hideBottomNavBar(activity)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        player.pausePlayer()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        player.stopPlayer()
+    }
 
 }

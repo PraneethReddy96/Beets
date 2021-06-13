@@ -297,7 +297,6 @@
             app:changeVisibility="@{viewModel.hasRecordingStarted == true}"
             app:layout_constraintBottom_toTopOf="@+id/bottom_divider"
             app:layout_constraintEnd_toStartOf="@+id/right_divider"
-            app:layout_constraintTop_toTopOf="@+id/pause_recording_btn"
             app:rippleColor="@color/pinkBtnBackground"
             app:srcCompat="@drawable/ic_check"
             tools:visibility="gone" />

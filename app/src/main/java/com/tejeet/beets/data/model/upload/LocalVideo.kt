@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 /**
  * A class that contains details of the video selected from the user's local storage.
- * This class is required since some of the parameters in {@link [com.tejeet.beets.model.StoriesDataModel]}
+ * This class is required since some of the parameters in {@link [com.tejeet.beets.data.model.StoriesData]}
  * are either unnecessary or impractical.
  *
  * @param filePath a url giving the path to the video file
@@ -18,4 +18,6 @@ data class LocalVideo(
     var filePath: String?,
     val duration: Long?,
     val dateCreated: String?
-): Parcelable
+): Parcelable{
+
+}
