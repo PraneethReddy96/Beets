@@ -6,9 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
-import com.google.android.exoplayer2.SimpleExoPlayer
 import com.tejeet.beets.R
-import com.tejeet.beets.data.model.upload.LocalVideo
 import com.tejeet.beets.databinding.FragmentPreviewBinding
 import com.tejeet.beets.exoplayer.Player
 import com.tejeet.beets.utils.BottomNavViewUtils.hideBottomNavBar

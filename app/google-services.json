@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1054292202315",
+    "project_id": "beets-7c171",
+    "storage_bucket": "beets-7c171.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1054292202315:android:4354fe74d548755da80ece",
+        "android_client_info": {
+          "package_name": "com.tejeet.beets"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1054292202315-b6mqjsecdf0v59r01l9u6urtf2rb2ipi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKm-e1VpEUnJf0WnZelNC2RM64jgT5QEE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1054292202315-b6mqjsecdf0v59r01l9u6urtf2rb2ipi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
