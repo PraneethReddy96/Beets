@@ -2,28 +2,37 @@ package com.tejeet.beets.ui.interests.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tejeet.beets.R
+import com.tejeet.beets.data.constants.AppPreferences
 import com.tejeet.beets.ui.interests.adapter.InterestAdapter
 import com.tejeet.beets.ui.interests.data.Interests
 import com.tejeet.beets.ui.interests.interfaces.ItemClickListener
 import com.tejeet.beets.ui.main.activity.MainActivity
 import java.util.*
 
-class MainActivity : AppCompatActivity(), ItemClickListener {
-    private var recyclerView: RecyclerView? =null
+class InterestsActivity : AppCompatActivity(), ItemClickListener {
+
+    private val TAG = "tag"
+    
+    private var recyclerView: RecyclerView? = null
     private var interestsList: MutableList<Interests>? = null
-   lateinit var adapter: InterestAdapter
-  lateinit var skip : Button
-  lateinit var next : Button
+    
+    lateinit var adapter: InterestAdapter
+    lateinit var skip: Button
+    lateinit var next: Button
+    
+    private var user_intrest_choices : String = "";
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_interest)
+        AppPreferences.init(this)
         initViewsAndListeners()
     }
 
@@ -36,17 +45,18 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
         skip = findViewById(R.id.btnSkip)
         next = findViewById(R.id.btnNext)
 
-       skip.setOnClickListener(View.OnClickListener {
-           val intent = Intent(this, MainActivity::class.java)
-           startActivity(intent)
-       })
+        skip.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        })
 
         next.setOnClickListener(View.OnClickListener {
-           val intent = Intent(this, SwipeActivity::class.java)
+            val intent = Intent(this, SwipeActivity::class.java)
             startActivity(intent)
+            AppPreferences.userIntrests = user_intrest_choices
+            Log.d(TAG, "Selected Intrests ${user_intrest_choices}")
 
-       })
-
+        })
 
 
     }
@@ -98,16 +108,16 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
     }
 
 
-
-
-   override fun onInterestsClicked(position: Int, interests: Interests?) {
+    override fun onInterestsClicked(position: Int, interests: Interests?) {
         val updatedactivities: Interests
         if (interests!!.isSelected) {
             updatedactivities = Interests(interests.interests, false)
+            user_intrest_choices = user_intrest_choices+interests.interests.toString()
         } else {
             updatedactivities = Interests(interests.interests, true)
         }
         interestsList!![position] = updatedactivities
         adapter?.notifyItemChanged(position)
+        
     }
 }
