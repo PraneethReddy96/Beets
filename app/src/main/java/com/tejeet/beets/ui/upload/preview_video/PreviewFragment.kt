@@ -41,6 +41,9 @@ class PreviewFragment : Fragment() {
                 }
             )
 
+        lifecycle.addObserver(player)
+        player.init()
+
         binding.nextBtn.setOnClickListener {
 //            findNavController().navigate(
 //                PreviewVideoFragmentDirections

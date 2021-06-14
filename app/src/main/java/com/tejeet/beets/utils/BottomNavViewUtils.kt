@@ -15,7 +15,11 @@ object BottomNavViewUtils {
 
     fun changeVisibility(activity: Activity?, shouldShow: Boolean) {
         val bottomNavigationView = (activity as? MainActivity)?.binding?.navView
+        val plusButton = (activity as? MainActivity)?.binding?.imageViewAddIcon
+//        val wholeBottomNav = (activity as? MainActivity)?.binding?.coordinatorNavView
         bottomNavigationView?.visibility = if (shouldShow) View.VISIBLE else View.GONE
+        plusButton?.visibility = if (shouldShow) View.VISIBLE else View.GONE
+//        wholeBottomNav?.visibility = if (shouldShow) View.VISIBLE else View.GONE
     }
 
     /**

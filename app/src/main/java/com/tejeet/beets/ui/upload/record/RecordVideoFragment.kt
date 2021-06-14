@@ -19,6 +19,7 @@ import com.tejeet.beets.databinding.FragmentRecordVideoBinding
 import com.tejeet.beets.databinding.PermissionsLayoutBinding
 import com.tejeet.beets.ui.upload.RecordViewModel
 import com.tejeet.beets.utils.BottomNavViewUtils.hideBottomNavBar
+import com.tejeet.beets.utils.BottomNavViewUtils.showBottomNavBar
 import com.tejeet.beets.utils.PermissionUtils
 import com.tejeet.beets.utils.PermissionUtils.arePermissionsGranted
 import com.tejeet.beets.utils.PermissionUtils.recordVideoPermissions
@@ -30,191 +31,192 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-@AndroidEntryPoint
+//@AndroidEntryPoint
 class RecordVideoFragment : Fragment() {
 
-    private var _permission_binding: PermissionsLayoutBinding? = null
-    private var _binding: FragmentRecordVideoBinding? = null
-    private lateinit var recordViewModel: RecordViewModel
-    private val binding get() = _binding!!
-    private val permission_binding get() = _permission_binding!!
-    private lateinit var cameraView: CameraView
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        recordViewModel = ViewModelProvider(requireActivity()).get(RecordViewModel::class.java)
-
-
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
-        _binding = FragmentRecordVideoBinding.inflate(inflater, container, false)
-        _permission_binding = binding.permissionsLayout
-
-        binding.lifecycleOwner = this
-        binding.viewModel = recordViewModel
-
-        cameraView = binding.cameraView
-
-        initCameraView()
-        changeUIBasedOnPermissions()
-        turnOnCameraPreview()
-
-        recordViewModel.localVideo.observe(viewLifecycleOwner, { localVideo ->
-
-            localVideo?.let {
-
-
-                findNavController().navigate(
-                    RecordVideoFragmentDirections.actionNavigationRecordToNavigationPreview(localVideo)
-                )
-
-                recordViewModel.resetLocalVideo()
-            }
-        })
-
-        setUpCameraSettings()
-        setUpPermissionClickListeners()
-
-        binding.closeBtn.setOnClickListener {
-            findNavController().popBackStack()
-        }
-
-//        binding.uploadImageBtn.setOnClickListener {
-//            findNavController().navigate(
-//                RecordVideoFragmentDirections.actionNavigationRecordToNavigationPreview()
+//    private var _permission_binding: PermissionsLayoutBinding? = null
+//    private var _binding: FragmentRecordVideoBinding? = null
+//    private lateinit var recordViewModel: RecordViewModel
+//    private val binding get() = _binding!!
+//    private val permission_binding get() = _permission_binding!!
+//    private lateinit var cameraView: CameraView
+//
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//
+//        recordViewModel = ViewModelProvider(requireActivity()).get(RecordViewModel::class.java)
+//
+//
+//    }
+//
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View {
+//        // Inflate the layout for this fragment
+//        _binding = FragmentRecordVideoBinding.inflate(inflater, container, false)
+//        _permission_binding = binding.permissionsLayout
+//
+//        binding.lifecycleOwner = this
+//        binding.viewModel = recordViewModel
+//
+//        cameraView = binding.cameraView
+//
+//        initCameraView()
+//        changeUIBasedOnPermissions()
+//        turnOnCameraPreview()
+//
+//        recordViewModel.localVideo.observe(viewLifecycleOwner, { localVideo ->
+//
+//            localVideo?.let {
+//
+//
+//                findNavController().navigate(
+//                    RecordVideoFragmentDirections.actionNavigationRecordToNavigationPreview(localVideo)
+//                )
+//
+//                recordViewModel.resetLocalVideo()
+//            }
+//        })
+//
+//        setUpCameraSettings()
+//        setUpPermissionClickListeners()
+//
+//        binding.closeBtn.setOnClickListener {
+//            findNavController().popBackStack()
+//        }
+//
+////        binding.uploadImageBtn.setOnClickListener {
+////            findNavController().navigate(
+////                RecordVideoFragmentDirections.actionNavigationRecordToNavigationPreview()
+////            )
+////        }
+//
+//        binding.startRecordingBtn.setOnClickListener {
+//
+//            if (recordViewModel.hasRecordingStarted.value == true)
+//                recordViewModel.resumeVideo()
+//            else{
+//                lifecycleScope.launch {
+//                    val fileDescriptor =
+//                        recordViewModel.startVideo(requireContext()) ?: return@launch
+//                    cameraView.takeVideo(fileDescriptor)
+//                }
+//            }
+//        }
+//
+//        binding.pauseRecordingBtn.setOnClickListener {
+//            cameraView.stopVideo()
+//            recordViewModel.pauseVideo()
+//
+//        }
+//
+//        binding.finishRecordingBtn.setOnClickListener {
+//            if (recordViewModel.hasRecordingStarted.value == true){
+//                cameraView.stopVideo()
+//                recordViewModel.stopVideo(requireContext())
+//            }
+//        }
+//
+//
+//        return binding.root
+//    }
+//
+//
+//
+//
+//    private fun initCameraView() {
+//        cameraView.apply {
+//            facing = Facing.BACK
+//            audio = Audio.ON
+//            mode = Mode.VIDEO
+//
+//            addCameraListener(recordViewModel.getCameraListener(requireContext()))
+//
+//            mapGesture(Gesture.PINCH, GestureAction.ZOOM) // Pinch to zoom!
+//            mapGesture(Gesture.TAP, GestureAction.AUTO_FOCUS) // Tap to focus!
+//        }
+//    }
+//
+//    private fun setUpPermissionClickListeners() {
+//        permission_binding.grantPermissionsBtn.setOnClickListener { requestPermissions() }
+////        binding.permissionsLayout.grantPermissionsBtn.setOnClickListener { requestPermissions() }
+//    }
+//
+//    private fun turnOnCameraPreview() {
+//        Timber.d("turnOnCameraPreview called")
+//        cameraView.open()
+//    }
+//
+//    private fun setUpCameraSettings() {
+//        binding.flipCameraBtn.setOnClickListener {
+//            cameraView.facing = if (cameraView.facing == Facing.FRONT) Facing.BACK else Facing.FRONT
+//        }
+//        binding.flashBtn.setOnClickListener {
+//            val isFlashOff = cameraView.flash == Flash.OFF
+//
+//            cameraView.flash = if (isFlashOff) Flash.ON else Flash.OFF
+//            binding.flashBtn.setImageResource(
+//                if (isFlashOff) R.drawable.ic_round_flash_on else R.drawable.ic_round_flash_off
 //            )
 //        }
-
-        binding.startRecordingBtn.setOnClickListener {
-
-            if (recordViewModel.hasRecordingStarted.value == true)
-                recordViewModel.resumeVideo()
-            else{
-                lifecycleScope.launch {
-                    val fileDescriptor =
-                        recordViewModel.startVideo(requireContext()) ?: return@launch
-                    cameraView.takeVideo(fileDescriptor)
-                }
-            }
-        }
-
-        binding.pauseRecordingBtn.setOnClickListener {
-            cameraView.stopVideo()
-            recordViewModel.pauseVideo()
-
-        }
-
-        binding.finishRecordingBtn.setOnClickListener {
-            if (recordViewModel.hasRecordingStarted.value == true){
-                cameraView.stopVideo()
-                recordViewModel.stopVideo(requireContext())
-            }
-        }
-
-
-        return binding.root
-    }
-
-
-
-
-    private fun initCameraView() {
-        cameraView.apply {
-            facing = Facing.BACK
-            audio = Audio.ON
-            mode = Mode.VIDEO
-
-            addCameraListener(recordViewModel.getCameraListener(requireContext()))
-
-            mapGesture(Gesture.PINCH, GestureAction.ZOOM) // Pinch to zoom!
-            mapGesture(Gesture.TAP, GestureAction.AUTO_FOCUS) // Tap to focus!
-        }
-    }
-
-    private fun setUpPermissionClickListeners() {
-        permission_binding.grantPermissionsBtn.setOnClickListener { requestPermissions() }
-//        binding.permissionsLayout.grantPermissionsBtn.setOnClickListener { requestPermissions() }
-    }
-
-    private fun turnOnCameraPreview() {
-        Timber.d("turnOnCameraPreview called")
-        cameraView.open()
-    }
-
-    private fun setUpCameraSettings() {
-        binding.flipCameraBtn.setOnClickListener {
-            cameraView.facing = if (cameraView.facing == Facing.FRONT) Facing.BACK else Facing.FRONT
-        }
-        binding.flashBtn.setOnClickListener {
-            val isFlashOff = cameraView.flash == Flash.OFF
-
-            cameraView.flash = if (isFlashOff) Flash.ON else Flash.OFF
-            binding.flashBtn.setImageResource(
-                if (isFlashOff) R.drawable.ic_round_flash_on else R.drawable.ic_round_flash_off
-            )
-        }
-    }
-
-    private val dialogMultiplePermissionsListener by lazy {
-        PermissionUtils.DialogMultiplePermissionsListener(
-            view = requireView(),
-            onPermissionsGranted = {
-                binding.permissionsLayout.root.visibility = View.GONE
-                turnOnCameraPreview()
-            },
-            onPermissionsDenied = { binding.permissionsLayout.root.visibility = View.VISIBLE }
-        )
-    }
-
-    private fun requestPermissions() {
-        PermissionUtils.requestPermissions(
-            requireContext(),
-            dialogMultiplePermissionsListener,
-            recordVideoPermissions
-        )
-    }
-
-    private fun changeUIBasedOnPermissions() {
-
-        if (arePermissionsGranted(requireContext(), recordVideoPermissions)){
-            turnOnCameraPreview()
-            changeSystemBars(requireActivity(), SystemBarColors.DARK)
-
-            hideBottomNavBar(requireActivity())
-            hideStatusAndNavBar(requireActivity())
-        }
-
-     }
-
-    override fun onResume() {
-        super.onResume()
-        changeUIBasedOnPermissions()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        if (arePermissionsGranted(requireContext(), recordVideoPermissions)) {
-            showStatusAndNavBar(requireActivity())
-            cameraView.close()
-            recordViewModel.stopVideo(requireContext())
-        }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-        _permission_binding = null
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        cameraView.destroy()
-    }
+//    }
+//
+//    private val dialogMultiplePermissionsListener by lazy {
+//        PermissionUtils.DialogMultiplePermissionsListener(
+//            view = requireView(),
+//            onPermissionsGranted = {
+//                binding.permissionsLayout.root.visibility = View.GONE
+//                turnOnCameraPreview()
+//            },
+//            onPermissionsDenied = { binding.permissionsLayout.root.visibility = View.VISIBLE }
+//        )
+//    }
+//
+//    private fun requestPermissions() {
+//        PermissionUtils.requestPermissions(
+//            requireContext(),
+//            dialogMultiplePermissionsListener,
+//            recordVideoPermissions
+//        )
+//    }
+//
+//    private fun changeUIBasedOnPermissions() {
+//
+//        if (arePermissionsGranted(requireContext(), recordVideoPermissions)){
+//            turnOnCameraPreview()
+//            changeSystemBars(requireActivity(), SystemBarColors.DARK)
+//
+//            hideBottomNavBar(requireActivity())
+//            hideStatusAndNavBar(requireActivity())
+//        }
+//
+//     }
+//
+//    override fun onResume() {
+//        super.onResume()
+//        changeUIBasedOnPermissions()
+//    }
+//
+//    override fun onStop() {
+//        super.onStop()
+//        if (arePermissionsGranted(requireContext(), recordVideoPermissions)) {
+//            showStatusAndNavBar(requireActivity())
+//            cameraView.close()
+//            recordViewModel.stopVideo(requireContext())
+//        }
+//    }
+//
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        _binding = null
+//        _permission_binding = null
+//    }
+//
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        showBottomNavBar(requireActivity())
+//        cameraView.destroy()
+//    }
 
 }

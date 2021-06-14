@@ -97,6 +97,20 @@ object ViewUtils {
         }
     }
 
+    fun showStatusBar(activity: Activity) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+            activity.window.insetsController?.show(WindowInsets.Type.statusBars())
+        else {
+            activity.window.decorView.systemUiVisibility =
+                (
+                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE // Prevents layout resize
+                                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN // Initially load things behind the navigation bars. Prevents resize
+                                or View.SYSTEM_UI_FLAG_IMMERSIVE // Prevents the screen from showing the status bar, on tapping
+                                or View.SYSTEM_UI_FLAG_FULLSCREEN // Hide the status bar only
+                        )
+        }
+    }
+
     fun hideStatusAndNavBar(activity: Activity) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             val windowInsetsController = activity.window.insetsController
