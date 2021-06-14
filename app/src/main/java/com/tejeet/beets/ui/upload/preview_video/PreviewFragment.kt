@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.tejeet.beets.R
 import com.tejeet.beets.databinding.FragmentPreviewBinding
@@ -45,10 +46,9 @@ class PreviewFragment : Fragment() {
         player.init()
 
         binding.nextBtn.setOnClickListener {
-//            findNavController().navigate(
-//                PreviewVideoFragmentDirections
-//                    .actionPreviewVideoFragmentToPostVideoFragment(localVideo)
-//            )
+            findNavController().navigate(
+                PreviewFragmentDirections.actionNavigationPreviewToNavigationPost(args.localVideo)
+            )
         }
 
         return binding.root

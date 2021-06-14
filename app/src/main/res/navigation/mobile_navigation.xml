@@ -37,5 +37,18 @@
         <argument
             android:name="localVideo"
             app:argType="com.tejeet.beets.data.model.upload.LocalVideo" />
+        <action
+            android:id="@+id/action_navigation_preview_to_navigation_post"
+            app:destination="@id/navigation_post" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_post"
+        android:name="com.tejeet.beets.ui.upload.post_video.PostVideoFragment"
+        android:label="fragment_post"
+        tools:layout="@layout/fragment_post_video" >
+        <argument
+            android:name="localVideo"
+            app:argType="com.tejeet.beets.data.model.upload.LocalVideo" />
     </fragment>
 </navigation>
