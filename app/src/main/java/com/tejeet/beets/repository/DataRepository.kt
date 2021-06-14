@@ -13,6 +13,6 @@ class DataRepository @Inject constructor(
     suspend fun getStoriesData():MutableList<StoriesData> {
 
         val dataList = apiService.getStory("OK",API_KEY)
-        return dataList.body()!!.storiesData as MutableList<StoriesData>
+        return dataList.body()?.storiesData as MutableList<StoriesData>
     }
 }

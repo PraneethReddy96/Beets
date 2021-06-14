@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.tejeet.beets.ui.upload.experimentrecord.RecordVideoViewModel" />
+            type="com.tejeet.beets.ui.upload.record.RecordVideoViewModel" />
 
     </data>
 

@@ -34,4 +34,19 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="roundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">4%</item>
+    </style>
+
+    <style name="topCornered" parent="">
+        <item name="cornerSizeTopLeft">6dp</item>
+        <item name="cornerSizeTopRight">6dp</item>
+    </style>
+
+    <style name="bottomCornered" parent="">
+        <item name="cornerSizeBottomLeft">6dp</item>
+        <item name="cornerSizeBottomRight">6dp</item>
+    </style>
+
 </resources>

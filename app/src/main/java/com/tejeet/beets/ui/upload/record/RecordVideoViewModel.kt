@@ -1,6 +1,6 @@
 
 
-package com.tejeet.beets.ui.upload.experimentrecord
+package com.tejeet.beets.ui.upload.record
 
 import android.content.Context
 import android.media.MediaPlayer

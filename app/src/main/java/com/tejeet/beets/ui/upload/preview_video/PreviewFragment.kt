@@ -78,4 +78,5 @@ class PreviewFragment : Fragment() {
         player.stopPlayer()
     }
 
+
 }

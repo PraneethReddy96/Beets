@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/navigation_record"
-        android:name="com.tejeet.beets.ui.upload.experimentrecord.RecordVideoFragment"
+        android:name="com.tejeet.beets.ui.upload.record.RecordVideoFragment"
         android:label="fragment_record"
         tools:layout="@layout/fragment_record_video" >
         <action

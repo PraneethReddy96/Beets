@@ -47,6 +47,14 @@
     <string name="permissions_denied">Permissions denied. Kindly grant permissions to proceed</string>
     <string name="play_video">Play Video</string>
     <string name="next">Next</string>
+    <string name="crate_video">Crate Video</string>
+    <string name="back_button">Back Button</string>
+    <string name="video_thumbnail">Video Thumbnail</string>
+    <string name="describe_your_video">Describe your video</string>
+    <string name="hashtags">#Hashtags</string>
+    <string name="friends">Friends</string>
+    <string name="post">Post</string>
+    <string name="drafts">Drafts</string>
 
 
 </resources>
