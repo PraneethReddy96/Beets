@@ -37,7 +37,7 @@ class DataRepository @Inject constructor(
 
 
                  val dataList:StoryUploadResponseDTO = apiService.uploadStoryVideo("OK",userId,
-                     userEmail,"U0xJzGoiDb13AsPmvZjrQFnT2qy9YaBl",musicName,hashTag,storyDesc,filePart)
+                     userEmail, API_KEY,musicName,hashTag,storyDesc,filePart)
 
                  return dataList
              }
