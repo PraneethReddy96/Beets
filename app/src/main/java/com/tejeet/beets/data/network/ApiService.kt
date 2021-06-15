@@ -21,13 +21,13 @@ interface ApiService {
     @POST(STORY_END_POINT)
     suspend fun uploadStoryVideo(
 
-        @Query("storyupload") storyUpload : String,
-        @Query("userID") userID:String,
-        @Query("userEmail") userEmail:String,
-        @Query("trustedAppKey") trustedAppKey:String,
-        @Query("musicname") musicname:String,
-        @Query("hashtag") hashtag:String,
-        @Query("storyDescription") storyDescription:String,
+        @Part("storyupload") storyUpload : String,
+        @Part("userID") userID:String,
+        @Part("userEmail") userEmail:String,
+        @Part("trustedAppKey") trustedAppKey:String,
+        @Part("musicname") musicname:String,
+        @Part("hashtag") hashtag:String,
+        @Part("storyDescription") storyDescription:String,
         @Part file: MultipartBody.Part
     ) : StoryUploadResponseDTO
 

@@ -26,14 +26,14 @@ class PostVideoViewModel @Inject constructor(
 ):ViewModel(){
 
 
-suspend fun uploadStory(rawFile: File, userId:String,
+suspend fun uploadStory( userId:String,
                         userEmail:String, musicName:String,
-                        hashTag:String, storyDesc:String): StoryUploadResponseDTO{
+                        hashTag:String, storyDesc:String , rawFile: File): StoryUploadResponseDTO{
 
    val response =  CoroutineScope(Dispatchers.IO).async {
 
-        dataRepository.uploadStoryVideo(rawFile,userId,
-            userEmail,musicName,hashTag,storyDesc)
+        dataRepository.uploadStoryVideo(userId,
+            userEmail,musicName,hashTag,storyDesc,rawFile)
 
     }
 

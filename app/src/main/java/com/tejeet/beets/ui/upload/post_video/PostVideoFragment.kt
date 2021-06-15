@@ -39,22 +39,27 @@ class PostVideoFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding =  FragmentPostVideoBinding.inflate(inflater, container, false)
 
-        val path = args.localVideo.filePath
+
 //        val file = File(URI(path))
-
-        binding.postBtn.setOnClickListener {
-            CoroutineScope(Dispatchers.Main).launch{
-                val response = viewModel.uploadStory(File(path),"1","manish@gmail.com",
-                    "Baby","#Trend","Description")
-
-            }
-        }
-
 
 
 
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val path = args.localVideo.filePath
+
+        binding.postBtn.setOnClickListener {
+            val mmmmm  = 1
+            CoroutineScope(Dispatchers.Main).launch{
+                val response = viewModel.uploadStory("1","manish@gmail.com",
+                    "Baby", "#Trend","Description",File(path))
+                val dd = response
+            }
+        }
     }
 
     override fun onDestroyView() {

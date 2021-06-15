@@ -18,8 +18,8 @@ class SplashScreen : AppCompatActivity() {
 
         Log.d(TAG, "Going to Main Activity")
 
-        getToken()
-        initApp()
+//        getToken()
+//        initApp()
 
         AppPreferences.init(this)
 

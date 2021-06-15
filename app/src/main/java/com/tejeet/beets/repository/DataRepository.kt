@@ -28,39 +28,19 @@ class DataRepository @Inject constructor(
 
     private val TAG = "DataRepository"
 
-    suspend fun uploadStoryVideo(rawFile:File,userId:String,
+    suspend fun uploadStoryVideo(userId:String,
                                  userEmail:String,musicName:String,
-                                 hashTag:String,storyDesc:String):StoryUploadResponseDTO{
+                                 hashTag:String,storyDesc:String,rawFile:File):StoryUploadResponseDTO{
 
-         val sdCardRoot = Environment.getExternalStorageDirectory()
-         val yourDir = File(sdCardRoot, "/Pictures")
+        val filePart = MultipartBody.Part.createFormData("storyVideo",
+           rawFile.name,rawFile.asRequestBody())
 
-
-         for (f in yourDir.listFiles()) {
-
-             if (f.isFile){
-
-                 Log.d(TAG, "uploadStoryVideo: ${f.name}")
-
-                 val filePart = MultipartBody.Part.createFormData("storyVideo", f.name, f.asRequestBody())
 
                  val dataList:StoryUploadResponseDTO = apiService.uploadStoryVideo("OK",userId,
-                     userEmail,API_KEY,musicName,hashTag,storyDesc,filePart)
+                     userEmail,"U0xJzGoiDb13AsPmvZjrQFnT2qy9YaBl",musicName,hashTag,storyDesc,filePart)
 
                  return dataList
              }
-
-
-         }
-
-//        val filePart = MultipartBody.Part.createFormData("storyVideo",
-//            rawFile.name,rawFile.asRequestBody())
-
-
-        val dd:StoryUploadResponseDTO? = null
-
-    return dd!!
-    }
 
 
 
