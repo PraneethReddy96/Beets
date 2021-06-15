@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
+    android:layout_marginTop="@dimen/dp_20"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.upload.post_video.PostVideoFragment">
 
@@ -16,6 +17,7 @@
         android:text="@string/crate_video"
         android:textColor="@color/colorBlack"
         android:textSize="14sp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,8 +32,8 @@
         android:layout_marginEnd="10dp"
         android:maxLines="3"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Set Your Description"
+        android:visibility="visible"
+        android:hint="@string/set_your_description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_up_plain_text" />
 
@@ -44,8 +46,8 @@
         android:layout_marginEnd="10dp"
         android:maxLines="3"
         android:ems="10"
+        android:visibility="visible"
         android:hint="@string/hashtags"
-        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etDescription" />
 
@@ -55,6 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Music Name"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/etHashtags"
         android:layout_marginStart="10dp"
@@ -72,6 +75,7 @@
         android:clickable="true"
         android:focusable="true"
         android:textAllCaps="false"
+        android:visibility="visible"
         android:textColor="@android:color/white"
         app:backgroundTint="@color/pinkBtnBackground"
         app:cornerRadius="4dp"
@@ -86,6 +90,7 @@
         app:resize_mode="fill"
         android:layout_margin="@dimen/dp_10"
         android:background="@color/colorBlack"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@id/post_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -104,6 +109,23 @@
         app:srcCompat="@drawable/ic_round_play"
         tools:visibility="visible"
         android:contentDescription="@string/play_video" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/postLoadingAnim"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/dp_30"
+        app:lottie_rawRes="@raw/post_lading"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/post_btn"/>
+
+
+
     <!--    <Button-->
 <!--        android:id="@+id/drafts_btn"-->
 <!--        android:layout_width="0dp"-->

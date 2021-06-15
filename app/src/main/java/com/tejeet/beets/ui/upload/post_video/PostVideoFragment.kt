@@ -2,6 +2,7 @@ package com.tejeet.beets.ui.upload.post_video
 
 
 import android.content.Context
+import android.content.Intent
 import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
@@ -15,10 +16,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.tejeet.beets.databinding.FragmentPostVideoBinding
 import com.tejeet.beets.exoplayer.Player
+import com.tejeet.beets.ui.main.activity.MainActivity
+import com.tejeet.beets.ui.upload.post_successful.PostSuccessfulActivity
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import java.io.File
 
 
@@ -72,9 +73,9 @@ class PostVideoFragment : Fragment() {
         binding.postBtn.setOnClickListener {
 
 
-            val desc = binding.etDescription.toString()
-            val music = binding.etMusicName.toString()
-            val hashtag = binding.etHashtags.toString()
+            val desc = binding.etDescription.text
+            val music = binding.etMusicName.text
+            val hashtag = binding.etHashtags.text
 
             if (desc.isEmpty()){
                 binding.etDescription.error = "please fill description"
@@ -83,10 +84,16 @@ class PostVideoFragment : Fragment() {
             }else if(hashtag.isEmpty()){
                 binding.etHashtags.error = "please enter hashtag"
             }else{
+                binding.postLoadingAnim.visibility = View.VISIBLE
+                binding.etDescription.visibility = View.GONE
+                binding.etMusicName.visibility = View.GONE
+                binding.etHashtags.visibility = View.GONE
+                binding.playerView.visibility = View.GONE
+                binding.postBtn.visibility = View.GONE
                 CoroutineScope(Dispatchers.Main).launch{
-                    val response = viewModel.uploadStory("1","manish@gmail.com",
-                        music, hashtag,desc,File(path))
-                    val dd = response
+                    viewModel.uploadStory("1","manish@gmail.com",
+                        music.toString(), hashtag.toString(),desc.toString(),File(path))
+                    startActivity(Intent(activity,PostSuccessfulActivity::class.java))
                 }
             }
         }
