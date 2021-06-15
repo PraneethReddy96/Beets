@@ -20,86 +20,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/back_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="6dp"
-        android:contentDescription="@string/back_button"
-        app:layout_constraintBottom_toBottomOf="@+id/sign_up_plain_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/sign_up_plain_text"
-        app:srcCompat="@drawable/ic_arrow_back" />
-
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/video_thumbnail"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:scaleType="centerCrop"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        app:shapeAppearance="@style/roundedImageView"
-        android:contentDescription="@string/video_thumbnail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up_plain_text"
-        tools:srcCompat="@drawable/ic_launcher_background" />
 
     <EditText
-        android:id="@+id/description_text"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="2dp"
-        android:background="@android:color/white"
+        android:id="@+id/etDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:maxLines="3"
         android:ems="10"
-        android:hint="@string/describe_your_video"
-        android:inputType="text"
-        android:maxLength="150"
-        android:textColor="@color/colorBlack"
-        android:textColorHint="@color/medium_grey"
-        app:layout_constraintBottom_toTopOf="@+id/hashtag_btn"
-        app:layout_constraintEnd_toStartOf="@+id/video_thumbnail"
-        app:layout_constraintStart_toStartOf="@+id/back_btn"
-        app:layout_constraintTop_toTopOf="@+id/video_thumbnail" />
+        android:inputType="textPersonName"
+        android:hint="Set Your Description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_plain_text" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/hashtag_btn"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/etHashtags"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:text="@string/hashtags"
-        android:textAllCaps="false"
-        app:backgroundTint="@android:color/white"
-        app:cornerRadius="4dp"
-        android:textColor="@color/colorBlack"
-        app:layout_constraintBottom_toBottomOf="@+id/video_thumbnail"
-        app:layout_constraintStart_toStartOf="@+id/description_text" />
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:maxLines="3"
+        android:ems="10"
+        android:hint="@string/hashtags"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDescription" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/friends_btn"
-        android:layout_width="wrap_content"
+
+    <EditText
+        android:id="@+id/etMusicName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:padding="4dp"
-        android:text="@string/friends"
-        android:textColor="@color/colorBlack"
-        android:textAllCaps="false"
-        app:backgroundTint="@android:color/white"
-        app:cornerRadius="4dp"
-        app:layout_constraintBottom_toBottomOf="@+id/video_thumbnail"
-        app:layout_constraintStart_toEndOf="@+id/hashtag_btn" />
-
-    <View
-        android:id="@+id/line"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="12dp"
-        android:background="@color/light_grey"
-        app:layout_constraintEnd_toEndOf="@+id/video_thumbnail"
-        app:layout_constraintStart_toStartOf="@+id/hashtag_btn"
-        app:layout_constraintTop_toBottomOf="@+id/friends_btn" />
+        android:hint="Music Name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etHashtags"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"/>
 
     <Button
         android:id="@+id/post_btn"
@@ -118,7 +78,33 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-<!--    <Button-->
+
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/player_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:resize_mode="fill"
+        android:layout_margin="@dimen/dp_10"
+        android:background="@color/colorBlack"
+        app:layout_constraintBottom_toTopOf="@id/post_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etMusicName"
+        app:use_controller="false"/>
+
+    <ImageView
+        android:id="@+id/play_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/player_view"
+        app:layout_constraintEnd_toEndOf="@id/player_view"
+        app:layout_constraintStart_toStartOf="@id/player_view"
+        app:layout_constraintTop_toTopOf="@id/player_view"
+        app:srcCompat="@drawable/ic_round_play"
+        tools:visibility="visible"
+        android:contentDescription="@string/play_video" />
+    <!--    <Button-->
 <!--        android:id="@+id/drafts_btn"-->
 <!--        android:layout_width="0dp"-->
 <!--        android:layout_height="wrap_content"-->

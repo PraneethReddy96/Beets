@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.tejeet.beets.databinding.FragmentPostVideoBinding
+import com.tejeet.beets.exoplayer.Player
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -27,6 +28,7 @@ class PostVideoFragment : Fragment() {
     private var _binding: FragmentPostVideoBinding? = null
     private val binding get() = _binding!!
     private val args by navArgs<PostVideoFragmentArgs>()
+    lateinit var player: Player
 
     private  val TAG = "PostVideoFragment"
 
@@ -39,6 +41,20 @@ class PostVideoFragment : Fragment() {
         // Inflate the layout for this fragment
 
         _binding =  FragmentPostVideoBinding.inflate(inflater, container, false)
+
+
+        player =
+            Player(
+                simpleExoplayerView = binding.playerView,
+                playBtn = binding.playBtn,
+                context = requireContext(),
+                url = args.localVideo.filePath,
+                onVideoEnded = {
+                    it.restartPlayer()
+                }
+            )
+        lifecycle.addObserver(player)
+        player.init()
 
 
 //      val file = File(URI(path))
@@ -54,10 +70,24 @@ class PostVideoFragment : Fragment() {
         val path = getRealPathFromURI(requireContext(),file?.toUri())
 
         binding.postBtn.setOnClickListener {
-            CoroutineScope(Dispatchers.Main).launch{
-                val response = viewModel.uploadStory("1","manish@gmail.com",
-                    "Baby", "#Trend","Description",File(path))
-                val dd = response
+
+
+            val desc = binding.etDescription.toString()
+            val music = binding.etMusicName.toString()
+            val hashtag = binding.etHashtags.toString()
+
+            if (desc.isEmpty()){
+                binding.etDescription.error = "please fill description"
+            }else if (music.isEmpty()){
+                binding.etMusicName.error = "please enter music name"
+            }else if(hashtag.isEmpty()){
+                binding.etHashtags.error = "please enter hashtag"
+            }else{
+                CoroutineScope(Dispatchers.Main).launch{
+                    val response = viewModel.uploadStory("1","manish@gmail.com",
+                        music, hashtag,desc,File(path))
+                    val dd = response
+                }
             }
         }
     }
