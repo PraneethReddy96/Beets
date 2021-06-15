@@ -50,7 +50,7 @@ class InterestsViewHolder(itemView: View, itemClickListener: ItemClickListener) 
         tvActivity.setText(interests.interests)
         if (interests.isSelected) {
 
-           llContainer.setBackgroundColor(ContextCompat.getColor(llContainer.context,R.color.pink))
+            llContainer.setBackgroundColor(ContextCompat.getColor(llContainer.context,R.color.pink))
             tvActivity.setBackgroundColor(ContextCompat.getColor(tvActivity.context, R.color.pink))
             tvActivity.setTextColor(ContextCompat.getColor(tvActivity.context, R.color.colorWhite))
             ivTick.visibility =View.VISIBLE
