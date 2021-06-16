@@ -6,7 +6,7 @@ import android.app.Activity
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
 import com.tejeet.beets.R
-import com.tejeet.beets.ui.main.activity.MainActivity
+import com.tejeet.beets.ui.activities.main.activity.MainActivity
 
 object BottomNavViewUtils {
 

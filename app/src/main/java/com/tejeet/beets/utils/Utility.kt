@@ -1,8 +1,17 @@
 package com.app.tiktok.utils
 
+import android.net.ConnectivityManager
+import android.os.Build
+import android.os.VibrationEffect
+import android.os.Vibrator
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.getSystemService
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.*
 
 object Utility {
+
+
     private val suffixes: NavigableMap<Long, String> = TreeMap()
     private fun setSuffixes() {
         suffixes[1_000L] = "k";

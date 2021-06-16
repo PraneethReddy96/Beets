@@ -8,13 +8,13 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-
         android:id="@+id/permissions_layout"
+
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FFFFFe">
 
-        <com.google.android.material.card.MaterialCardView
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -76,7 +76,7 @@
                     app:layout_constraintStart_toStartOf="@+id/textView4"
                     app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-                <com.google.android.material.button.MaterialButton
+                <Button
                     android:id="@+id/grant_permissions_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -88,12 +88,13 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="11sp"
                     app:backgroundTint="@android:color/white"
+                    android:background="@drawable/button_background_style"
                     app:cornerRadius="4dp"
                     app:elevation="6dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
+        </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
