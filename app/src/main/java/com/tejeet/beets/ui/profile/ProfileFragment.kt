@@ -12,6 +12,8 @@ import com.tejeet.beets.R
 import com.tejeet.beets.databinding.FragmentProfileBinding
 import com.tejeet.beets.ui.main.viewmodel.MainViewModel
 import com.tejeet.beets.utils.Constants.showStatusAndNavBar
+import com.tejeet.beets.utils.ViewUtils.changeStatusBarColor
+import com.tejeet.beets.utils.ViewUtils.showStatusBar
 import timber.log.Timber
 
 class ProfileFragment : Fragment() {
@@ -62,6 +64,11 @@ class ProfileFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+        changeStatusBarColor(requireActivity(),R.color.colorBlack)
     }
 
 //    class MyFragmentStateAdapter(

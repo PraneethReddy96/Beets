@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.tejeet.beets.databinding.ActivityPostSuccessfulBinding
 import com.tejeet.beets.ui.main.activity.MainActivity
-import com.tejeet.beets.ui.upload.post_video.PostVideoFragmentArgs
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
