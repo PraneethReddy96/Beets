@@ -2,7 +2,7 @@
 package com.tejeet.beets.repository.record
 
 import android.content.Context
-import com.tejeet.beets.data.model.upload.LocalRecordLocation
+import com.tejeet.beets.data.modelDTO.upload.LocalRecordLocation
 
 
 interface RecordVideoRepo {

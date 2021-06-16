@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.tejeet.beets.ui.home.fragment.HomeFragment"
+        android:name="com.tejeet.beets.ui.fragments.home.fragment.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
     <fragment
@@ -31,12 +31,12 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_preview"
-        android:name="com.tejeet.beets.ui.upload.preview_video.PreviewFragment"
+        android:name="com.tejeet.beets.ui.fragments.upload.preview_video.PreviewFragment"
         android:label="fragment_preview"
         tools:layout="@layout/fragment_preview" >
         <argument
             android:name="localVideo"
-            app:argType="com.tejeet.beets.data.model.upload.LocalVideo" />
+            app:argType="com.tejeet.beets.data.modelDTO.upload.LocalVideo" />
         <action
             android:id="@+id/action_navigation_preview_to_navigation_post"
             app:destination="@id/navigation_post" />
@@ -49,6 +49,6 @@
         tools:layout="@layout/fragment_post_video" >
         <argument
             android:name="localVideo"
-            app:argType="com.tejeet.beets.data.model.upload.LocalVideo" />
+            app:argType="com.tejeet.beets.data.modelDTO.upload.LocalVideo" />
     </fragment>
 </navigation>

@@ -3,7 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
-//    id 'com.google.gms.google-services'
+    id 'com.google.gms.google-services'
 
 }
 apply plugin: 'kotlin-parcelize'
@@ -55,13 +55,13 @@ dependencies {
     implementation "androidx.activity:activity-ktx:1.2.0-alpha06"
     implementation 'com.google.android.material:material:1.3.0-alpha01'
     implementation "androidx.constraintlayout:constraintlayout:2.0.0-beta7"
-    implementation 'androidx.navigation:navigation-fragment:2.2.2'
-    implementation 'androidx.navigation:navigation-ui:2.2.2'
 
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.firebase:firebase-auth:21.0.1'
     implementation 'com.google.firebase:firebase-messaging:22.0.0'
+    implementation 'com.google.firebase:firebase-database:20.0.0'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
 
 
     testImplementation 'junit:junit:4.13'
@@ -129,6 +129,7 @@ dependencies {
     // SwipeToRefresh
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
+    //aa
 
 }
 

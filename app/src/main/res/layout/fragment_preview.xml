@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/transparent"
-    tools:context=".ui.upload.preview_video.PreviewFragment">
+    tools:context=".ui.fragments.upload.preview_video.PreviewFragment">
 
     <com.google.android.exoplayer2.ui.PlayerView
         android:id="@+id/player_view"
@@ -34,7 +34,7 @@
         tools:visibility="visible"
         android:contentDescription="@string/play_video" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/next_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

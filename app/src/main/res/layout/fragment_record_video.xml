@@ -286,20 +286,20 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:visibility="visible" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/finish_recording_btn"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:clickable="true"
-            android:contentDescription="@string/finish_recording"
-            android:focusable="true"
-            app:backgroundTint="@color/pinkBtnBackground"
-            app:changeVisibility="@{viewModel.hasRecordingStarted == true}"
-            app:layout_constraintBottom_toTopOf="@+id/bottom_divider"
-            app:layout_constraintEnd_toStartOf="@+id/right_divider"
-            app:rippleColor="@color/pinkBtnBackground"
-            app:srcCompat="@drawable/ic_check"
-            tools:visibility="gone" />
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/finish_recording_btn"-->
+<!--            android:layout_width="24dp"-->
+<!--            android:layout_height="24dp"-->
+<!--            android:clickable="true"-->
+<!--            android:contentDescription="@string/finish_recording"-->
+<!--            android:focusable="true"-->
+<!--            app:backgroundTint="@color/pinkBtnBackground"-->
+<!--            app:changeVisibility="@{viewModel.hasRecordingStarted == true}"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/bottom_divider"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/right_divider"-->
+<!--            app:rippleColor="@color/pinkBtnBackground"-->
+<!--            app:srcCompat="@drawable/ic_check"-->
+<!--            tools:visibility="gone" />-->
 
         <include
             android:id="@+id/little_space_layout"

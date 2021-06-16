@@ -13,6 +13,7 @@ object Constants {
     const val BASE_URL = "https://beets.tejeet.com/"
     const val STORY_END_POINT = "api/app.php?"
     const val API_KEY = "U0xJzGoiDb13AsPmvZjrQFnT2qy9YaBl"
+    const val TAG = "tag"
 
     fun showStatusAndNavBar(activity: Activity) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
