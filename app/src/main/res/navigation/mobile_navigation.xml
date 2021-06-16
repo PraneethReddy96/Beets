@@ -20,4 +20,35 @@
         android:name="com.tejeet.beets.ui.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/navigation_record"
+        android:name="com.tejeet.beets.ui.upload.record.RecordVideoFragment"
+        android:label="fragment_record"
+        tools:layout="@layout/fragment_record_video" >
+        <action
+            android:id="@+id/action_navigation_record_to_navigation_preview"
+            app:destination="@id/navigation_preview" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_preview"
+        android:name="com.tejeet.beets.ui.upload.preview_video.PreviewFragment"
+        android:label="fragment_preview"
+        tools:layout="@layout/fragment_preview" >
+        <argument
+            android:name="localVideo"
+            app:argType="com.tejeet.beets.data.model.upload.LocalVideo" />
+        <action
+            android:id="@+id/action_navigation_preview_to_navigation_post"
+            app:destination="@id/navigation_post" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_post"
+        android:name="com.tejeet.beets.ui.upload.post_video.PostVideoFragment"
+        android:label="fragment_post"
+        tools:layout="@layout/fragment_post_video" >
+        <argument
+            android:name="localVideo"
+            app:argType="com.tejeet.beets.data.model.upload.LocalVideo" />
+    </fragment>
 </navigation>

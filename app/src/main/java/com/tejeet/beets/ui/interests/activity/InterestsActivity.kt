@@ -14,7 +14,7 @@ import com.tejeet.beets.ui.interests.interfaces.ItemClickListener
 import com.tejeet.beets.ui.main.activity.MainActivity
 import java.util.*
 
-class MainActivity : AppCompatActivity(), ItemClickListener {
+class InterestsActivity : AppCompatActivity(), ItemClickListener {
     private var recyclerView: RecyclerView? =null
     private var interestsList: MutableList<Interests>? = null
    lateinit var adapter: InterestAdapter

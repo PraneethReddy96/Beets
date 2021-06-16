@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.google.android.exoplayer2.ExoPlaybackException
 import com.tejeet.beets.app.MyApp
 import com.tejeet.beets.model.StoriesDataModel
 import com.tejeet.beets.ui.main.viewmodel.MainViewModel
@@ -108,18 +109,21 @@ class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
             logError("onPlayerStateChanged playbackState: $playbackState")
         }
 
-        override fun onPlayerError(error: com.google.android.exoplayer2.ExoPlaybackException?) {
+        override fun onPlayerError(error: ExoPlaybackException) {
             super.onPlayerError(error)
         }
     }
 
     private fun prepareVideoPlayer() {
-        simplePlayer = ExoPlayerFactory.newSimpleInstance(context)
-        cacheDataSourceFactory = CacheDataSourceFactory(simpleCache,
-            DefaultHttpDataSourceFactory(
-                Util.getUserAgent(context,
-                "exo"))
-        )
+        simplePlayer = ExoPlayerFactory.newSimpleInstance(requireContext())
+        cacheDataSourceFactory = simpleCache?.let {
+            CacheDataSourceFactory(
+                it,
+                DefaultHttpDataSourceFactory(
+                    Util.getUserAgent(requireContext(),
+                    "exo"))
+            )
+        }
     }
 
     private fun getPlayer(): SimpleExoPlayer? {
@@ -134,12 +138,14 @@ class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
 
         val uri = Uri.parse(linkUrl)
 
-        val mediaSource = ProgressiveMediaSource.Factory(cacheDataSourceFactory).createMediaSource(uri)
+        val mediaSource = cacheDataSourceFactory?.let { ProgressiveMediaSource.Factory(it).createMediaSource(uri) }
 
-        simplePlayer?.prepare(mediaSource, true, true)
+        if (mediaSource != null) {
+            simplePlayer?.prepare(mediaSource, true, true)
+        }
         simplePlayer?.repeatMode = Player.REPEAT_MODE_ONE
         simplePlayer?.playWhenReady = true
-        simplePlayer?.addListener(playerCallback)
+        playerCallback?.let { simplePlayer?.addListener(it) }
 
         toPlayVideoPosition = -1
     }

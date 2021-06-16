@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.work.Data
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
+import com.tejeet.beets.R
 import com.tejeet.beets.data.model.StoriesData
 import com.tejeet.beets.model.ResultData
 import com.tejeet.beets.model.StoriesDataModel
@@ -19,6 +20,9 @@ import com.tejeet.beets.ui.main.viewmodel.MainViewModel
 import com.tejeet.beets.utils.Constants
 import com.tejeet.beets.work.PreCachingService
 import com.tejeet.beets.databinding.FragmentHomeBinding
+import com.tejeet.beets.utils.ViewUtils
+import com.tejeet.beets.utils.ViewUtils.changeStatusBarColor
+import com.tejeet.beets.utils.ViewUtils.hideStatusBar
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -76,6 +80,12 @@ class HomeFragment : Fragment() {
             .build()
         WorkManager.getInstance(requireContext())
             .enqueue(preCachingWork)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        changeStatusBarColor(requireActivity(),R.color.transparent)
+        hideStatusBar(requireActivity())
     }
 
     override fun onDestroyView() {

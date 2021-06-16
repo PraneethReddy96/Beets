@@ -1,11 +1,11 @@
 package com.tejeet.beets.ui.main.viewmodel
 
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.tejeet.beets.data.model.StoriesData
 import com.tejeet.beets.model.ResultData
-import com.tejeet.beets.model.StoriesDataModel
 import com.tejeet.beets.repository.DataRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

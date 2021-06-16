@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:layout_marginTop="@dimen/dp_20"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.upload.post_video.PostVideoFragment">
+
+    <TextView
+        android:id="@+id/sign_up_plain_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/crate_video"
+        android:textColor="@color/colorBlack"
+        android:textSize="14sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/etDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:maxLines="3"
+        android:ems="10"
+        android:visibility="visible"
+        android:hint="@string/set_your_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_plain_text" />
+
+    <EditText
+        android:id="@+id/etHashtags"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:maxLines="3"
+        android:ems="10"
+        android:visibility="visible"
+        android:hint="@string/hashtags"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDescription" />
+
+
+    <EditText
+        android:id="@+id/etMusicName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Music Name"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etHashtags"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"/>
+
+    <Button
+        android:id="@+id/post_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginBottom="6dp"
+        android:text="@string/post"
+        android:clickable="true"
+        android:focusable="true"
+        android:textAllCaps="false"
+        android:visibility="visible"
+        android:textColor="@android:color/white"
+        app:backgroundTint="@color/pinkBtnBackground"
+        app:cornerRadius="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/player_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:resize_mode="fill"
+        android:layout_margin="@dimen/dp_10"
+        android:background="@color/colorBlack"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@id/post_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etMusicName"
+        app:use_controller="false"/>
+
+    <ImageView
+        android:id="@+id/play_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/player_view"
+        app:layout_constraintEnd_toEndOf="@id/player_view"
+        app:layout_constraintStart_toStartOf="@id/player_view"
+        app:layout_constraintTop_toTopOf="@id/player_view"
+        app:srcCompat="@drawable/ic_round_play"
+        tools:visibility="visible"
+        android:contentDescription="@string/play_video" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/postLoadingAnim"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/dp_30"
+        app:lottie_rawRes="@raw/post_lading"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/post_btn"/>
+
+
+
+    <!--    <Button-->
+<!--        android:id="@+id/drafts_btn"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="12dp"-->
+<!--        android:layout_marginEnd="6dp"-->
+<!--        android:layout_marginBottom="6dp"-->
+<!--        android:clickable="@{viewModel.uploadStatus == Progress.IDLE}"-->
+<!--        android:text="@string/drafts"-->
+<!--        android:textAllCaps="false"-->
+<!--        android:textColor="@android:color/white"-->
+<!--        app:backgroundTint="@color/pinkBtnBackground"-->
+<!--        app:cornerRadius="4dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/post_btn"-->
+<!--        app:layout_constraintHorizontal_bias="0.5"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
