@@ -92,7 +92,8 @@
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/dp_40"
+                android:outlineSpotShadowColor="@color/cream"
                 android:background="@android:color/transparent"
                 app:layout_constraintBottom_toBottomOf="@id/slideViewPager"
                 app:layout_constraintEnd_toEndOf="parent"

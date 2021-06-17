@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.tabs.TabLayoutMediator
 import com.tejeet.beets.R
 import com.tejeet.beets.databinding.FragmentDiscoverBinding
 import com.tejeet.beets.ui.discover.RecyclerViews.*
@@ -76,6 +77,12 @@ class DiscoverFragment : Fragment() {
         val adapter = ImageViewPagerAdapter(images)
 
         binding.slideViewPager.adapter = adapter
+
+
+        TabLayoutMediator(binding.tabLayout, binding.slideViewPager) {tab, position ->
+
+        }.attach()
+
 
 
         return binding.root
