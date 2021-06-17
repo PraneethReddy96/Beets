@@ -1,18 +1,13 @@
 
-package com.tejeet.beets.ui.upload.record
+package com.tejeet.beets.ui.fragments.upload.record
 
 import android.content.Context
 import android.content.Intent
 import android.media.MediaMetadataRetriever
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.os.VibrationEffect
-import android.os.Vibrator
 import android.provider.MediaStore
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.otaliastudios.cameraview.CameraView
@@ -25,6 +20,7 @@ import com.otaliastudios.cameraview.gesture.GestureAction
 import com.tejeet.beets.R
 import com.tejeet.beets.data.modelDTO.upload.LocalVideo
 import com.tejeet.beets.databinding.FragmentRecordVideoBinding
+import com.tejeet.beets.ui.upload.record.RecordVideoViewModel
 import com.tejeet.beets.utils.BottomNavViewUtils.hideBottomNavBar
 import com.tejeet.beets.utils.BottomNavViewUtils.showBottomNavBar
 import com.tejeet.beets.utils.PermissionUtils

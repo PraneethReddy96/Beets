@@ -1,7 +1,7 @@
 package com.tejeet.beets.di
 
 
-import com.tejeet.beets.network.ApiService
+import com.tejeet.beets.data.network.ApiService
 import com.tejeet.beets.utils.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides

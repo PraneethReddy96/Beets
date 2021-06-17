@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBlack"
-        tools:context=".ui.upload.record.RecordVideoFragment">
+        tools:context=".ui.fragments.upload.record.RecordVideoFragment">
 
         <com.otaliastudios.cameraview.CameraView
             android:id="@+id/camera_view"
