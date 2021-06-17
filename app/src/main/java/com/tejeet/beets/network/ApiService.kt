@@ -1,4 +1,4 @@
-package com.tejeet.beets.network
+package com.tejeet.beets.data.network
 
 import com.tejeet.beets.data.modelDTO.FirebaseTokenUpdateResponseDTO
 import com.tejeet.beets.data.modelDTO.StoryResponseDTO

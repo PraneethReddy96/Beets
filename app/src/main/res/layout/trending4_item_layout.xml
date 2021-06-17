@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="@dimen/dp_100"
+    android:layout_margin="@dimen/dp_2"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/recyclerImage4"
+        android:scaleType="fitXY"
+        android:layout_width="@dimen/dp_150"
+        android:layout_height="@dimen/dp_200"/>
+
+
+
+
+
+</androidx.cardview.widget.CardView>
