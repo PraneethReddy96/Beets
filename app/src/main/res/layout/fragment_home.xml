@@ -29,4 +29,17 @@
         app:lottie_autoPlay="true"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_no_internet_connection"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_rawRes="@raw/no_internet_connection"
+        app:lottie_loop="true"
+        android:visibility="invisible"
+        app:lottie_autoPlay="true"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

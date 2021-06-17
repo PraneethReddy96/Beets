@@ -14,8 +14,9 @@ import com.tejeet.beets.databinding.FragmentDiscoverBinding
 import com.tejeet.beets.ui.discover.RecyclerViews.*
 import com.tejeet.beets.ui.discover.data.ImageViewPagerAdapter
 import com.tejeet.beets.ui.discover.data.modelClass.DataItem
-import com.tejeet.beets.ui.discover.data.sliderModel
+import com.tejeet.beets.ui.discover.data.SliderModel
 import com.tejeet.beets.ui.discover.viewmodel.DiscoverViewModel
+import com.tejeet.beets.utils.ViewUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,7 +26,7 @@ class DiscoverFragment : Fragment() {
     private val discoverViewModel: DiscoverViewModel by viewModels()
     private var _binding: FragmentDiscoverBinding? = null
     private val binding get() = _binding!!
-    val modelList: MutableList<sliderModel> = mutableListOf()
+    val modelList: MutableList<SliderModel> = mutableListOf()
     private var dataItemList = mutableListOf<DataItem?>()
     private var dataItemList1 = mutableListOf<DataItem?>()
     private var dataItemList2 = mutableListOf<DataItem?>()
@@ -255,6 +256,10 @@ class DiscoverFragment : Fragment() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        ViewUtils.changeStatusBarColor(requireActivity(),R.color.colorBlack)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

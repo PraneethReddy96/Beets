@@ -19,6 +19,7 @@ import com.tejeet.beets.ui.activities.main.viewmodel.MainViewModel
 import com.tejeet.beets.utils.Constants
 import com.tejeet.beets.work.PreCachingService
 import com.tejeet.beets.databinding.FragmentHomeBinding
+import com.tejeet.beets.utils.ResUtils.showSnackBar
 import com.tejeet.beets.utils.ViewUtils.changeStatusBarColor
 import com.tejeet.beets.utils.ViewUtils.hideStatusBar
 import dagger.hilt.android.AndroidEntryPoint
@@ -48,17 +49,26 @@ class HomeFragment : Fragment() {
             when(value) {
                 is ResultData.Loading -> {
                     binding.lottieLoaderAnimation.visibility = View.VISIBLE
+                    binding.lottieNoInternetConnection.visibility = View.GONE
+                    changeStatusBarColor(requireActivity(), R.color.colorBlack)
                     Log.d(TAG, "Loading")
                 }
                 is ResultData.Success -> {
                     if (!value.data.isNullOrEmpty()) {
                         binding.lottieLoaderAnimation.visibility = View.GONE
+                        binding.lottieNoInternetConnection.visibility = View.GONE
                         val dataList = value.data
                         storiesPagerAdapter = StoriesPagerAdapter(this, dataList)
                         binding.viewPagerStories.adapter = storiesPagerAdapter
-
+                        changeStatusBarColor(requireActivity(), R.color.transparent)
                         startPreCaching(dataList)
                     }
+                }
+                is ResultData.Exception ->{
+                    showSnackBar(requireView(),value.nothing.toString())
+                    binding.lottieLoaderAnimation.visibility = View.GONE
+                    binding.lottieNoInternetConnection.visibility = View.VISIBLE
+                    changeStatusBarColor(requireActivity(), R.color.colorBlack)
                 }
             }
         })

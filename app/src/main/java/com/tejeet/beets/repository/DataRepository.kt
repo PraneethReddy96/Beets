@@ -37,7 +37,7 @@ class DataRepository @Inject constructor(private val apiService: ApiService) {
     suspend fun getGifs(name: String): MutableList<DataItem?> {
 
         val data = ApiClient.Search(searchKey, name, limit, offset, rating, language)
-        return data?.data as MutableList<DataItem?>
+        return data.data as MutableList<DataItem?>
 
     }
 

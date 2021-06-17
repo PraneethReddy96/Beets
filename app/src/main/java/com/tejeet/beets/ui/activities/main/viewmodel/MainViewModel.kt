@@ -1,9 +1,11 @@
 package com.tejeet.beets.ui.activities.main.viewmodel
 
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
+import android.app.Application
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import androidx.lifecycle.*
 import com.tejeet.beets.data.modelDTO.StoriesData
 import com.tejeet.beets.model.ResultData
 import com.tejeet.beets.repository.DataRepository
@@ -13,12 +15,37 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(private val dataRepository: DataRepository): ViewModel() {
+class MainViewModel @Inject constructor(
+    private val dataRepository: DataRepository,
+    application: Application
+    ): AndroidViewModel(application) {
 
     fun getDataList(): LiveData<ResultData<MutableList<StoriesData>?>> {
-        return flow {
-            emit(ResultData.Loading())
-            emit(ResultData.Success(dataRepository.getStoriesData()))
-        }.asLiveData(Dispatchers.IO)
+
+            return flow {
+                emit(ResultData.Loading())
+                if (hasInternetConnection()){
+                    emit(ResultData.Success(dataRepository.getStoriesData()))
+                }else{
+                    emit(ResultData.Exception("NO Internet Connection"))
+                }
+
+
+            }.asLiveData(Dispatchers.IO)
+
+    }
+
+    private fun hasInternetConnection():Boolean{
+        val connectivityManager = getApplication<Application>().getSystemService(
+            Context.CONNECTIVITY_SERVICE
+        )as ConnectivityManager
+        val activeNetwork = connectivityManager.activeNetwork ?: return false
+        val capabilities = connectivityManager.getNetworkCapabilities(activeNetwork) ?: return false
+        return when{
+            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
+            else -> false;
+        }
     }
 }

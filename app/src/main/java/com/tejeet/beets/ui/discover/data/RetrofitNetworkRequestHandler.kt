@@ -1,4 +1,4 @@
-package com.nero.mint.data.remote
+package com.tejeet.beets.ui.discover.data
 
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
