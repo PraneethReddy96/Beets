@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+
     tools:context=".ui.discover.fragment.DiscoverFragment">
 
     <RelativeLayout
+        android:id="@+id/rlContainerAlpha"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
 
         <ImageView
@@ -58,12 +59,23 @@
             android:layout_marginRight="@dimen/dp_15"
             android:src="@drawable/ic_barcode_scanner" />
 
+    </RelativeLayout>
+<ScrollView
+    android:layout_below="@id/rlContainerAlpha"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/discoverPageSearchBar"
-            android:layout_marginTop="@dimen/dp_15">
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/dp_15"
+            android:layout_height="wrap_content">
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/slideViewPager"
@@ -80,7 +92,8 @@
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/dp_40"
+                android:outlineSpotShadowColor="@color/cream"
                 android:background="@android:color/transparent"
                 app:layout_constraintBottom_toBottomOf="@id/slideViewPager"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -96,6 +109,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="3"
+            android:layout_marginTop="@dimen/dp_20"
             android:layout_below="@id/constraintContainer"
             android:orientation="horizontal">
 
@@ -111,14 +125,15 @@
                     android:id="@+id/hashTagCardView1"
                     android:layout_width="@dimen/dp_50"
                     android:layout_height="@dimen/dp_50"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:backgroundTint="@color/cream"
+                    android:layout_marginLeft="@dimen/dp_2"
                     android:elevation="@dimen/dp_100"
                     android:foregroundGravity="center"
-                    app:cardCornerRadius="300dp">
+                    app:cardCornerRadius="@dimen/dp_300">
 
 
                     <ImageView
-                        android:layout_width="@dimen/dp_30"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/dp_30"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_baseline_tag_24" />
@@ -130,7 +145,7 @@
                     android:id="@+id/textTv1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:layout_toRightOf="@id/hashTagCardView1"
                     android:maxLines="1"
                     android:text="Euro2020"
@@ -145,7 +160,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textTv1"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:layout_toRightOf="@id/hashTagCardView1"
                     android:layout_marginRight="@dimen/dp_5"
                     android:maxLines="1"
@@ -187,7 +202,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_200"
             android:layout_below="@id/llHeaderBar1"
-            android:layout_marginTop="@dimen/dp_10"
             android:id="@+id/recyclerView_1">
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -199,7 +213,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="3"
-            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_20"
             android:layout_below="@id/recyclerView_1"
             android:orientation="horizontal">
 
@@ -215,14 +229,15 @@
                     android:id="@+id/hashTagCardView2"
                     android:layout_width="@dimen/dp_50"
                     android:layout_height="@dimen/dp_50"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_2"
                     android:elevation="@dimen/dp_100"
+                    android:backgroundTint="@color/cream"
                     android:foregroundGravity="center"
-                    app:cardCornerRadius="180dp">
+                    app:cardCornerRadius="@dimen/dp_300">
 
 
                     <ImageView
-                        android:layout_width="@dimen/dp_30"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/dp_30"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_baseline_tag_24" />
@@ -234,7 +249,7 @@
                     android:id="@+id/textTv2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:layout_toRightOf="@id/hashTagCardView2"
                     android:maxLines="1"
                     android:text="Anime"
@@ -249,7 +264,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textTv2"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:layout_toRightOf="@id/hashTagCardView2"
                     android:layout_marginRight="@dimen/dp_5"
                     android:maxLines="1"
@@ -291,7 +306,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_200"
             android:layout_below="@id/llHeaderBar2"
-            android:layout_marginTop="@dimen/dp_10"
             android:id="@+id/recyclerView_2">
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -304,6 +318,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="3"
+            android:layout_marginTop="@dimen/dp_20"
             android:layout_below="@id/recyclerView_2"
             android:orientation="horizontal">
 
@@ -319,15 +334,15 @@
                     android:id="@+id/hashTagCardView3"
                     android:layout_width="@dimen/dp_50"
                     android:layout_height="@dimen/dp_50"
-                    android:layout_marginLeft="@dimen/dp_15"
-
+                    android:layout_marginLeft="@dimen/dp_2"
+                    android:backgroundTint="@color/cream"
                     android:elevation="@dimen/dp_100"
                     android:foregroundGravity="center"
-                    app:cardCornerRadius="180dp">
+                    app:cardCornerRadius="@dimen/dp_300">
 
 
                     <ImageView
-                        android:layout_width="@dimen/dp_30"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/dp_30"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_baseline_tag_24" />
@@ -339,7 +354,7 @@
                     android:id="@+id/textTv3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:layout_toRightOf="@id/hashTagCardView3"
                     android:maxLines="1"
                     android:text="K-Pop"
@@ -354,7 +369,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textTv3"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:layout_toRightOf="@id/hashTagCardView3"
                     android:layout_marginRight="@dimen/dp_5"
                     android:maxLines="1"
@@ -396,7 +411,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_200"
             android:layout_below="@id/llHeaderBar3"
-            android:layout_marginTop="@dimen/dp_10"
             android:id="@+id/recyclerView_3">
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -408,6 +422,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="3"
+            android:layout_marginTop="@dimen/dp_20"
             android:layout_below="@id/recyclerView_3"
             android:orientation="horizontal">
 
@@ -423,14 +438,15 @@
                     android:id="@+id/hashTagCardView4"
                     android:layout_width="@dimen/dp_50"
                     android:layout_height="@dimen/dp_50"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:backgroundTint="@color/cream"
+                    android:layout_marginLeft="@dimen/dp_2"
                     android:elevation="@dimen/dp_100"
                     android:foregroundGravity="center"
-                    app:cardCornerRadius="180dp">
+                    app:cardCornerRadius="@dimen/dp_300">
 
 
                     <ImageView
-                        android:layout_width="@dimen/dp_30"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/dp_30"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_baseline_tag_24" />
@@ -442,7 +458,7 @@
                     android:id="@+id/textTv4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:layout_toRightOf="@id/hashTagCardView4"
                     android:maxLines="1"
                     android:text="NoToRacism"
@@ -457,7 +473,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textTv4"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:layout_toRightOf="@id/hashTagCardView4"
                     android:layout_marginRight="@dimen/dp_5"
                     android:maxLines="1"
@@ -499,7 +515,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_200"
             android:layout_below="@id/llHeaderBar4"
-            android:layout_marginTop="@dimen/dp_10"
             android:id="@+id/recyclerView_4">
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -512,6 +527,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="3"
+            android:layout_marginTop="@dimen/dp_20"
             android:layout_below="@id/recyclerView_4"
             android:orientation="horizontal">
 
@@ -527,14 +543,15 @@
                     android:id="@+id/hashTagCardView5"
                     android:layout_width="@dimen/dp_50"
                     android:layout_height="@dimen/dp_50"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_2"
                     android:elevation="@dimen/dp_100"
+                    android:backgroundTint="@color/cream"
                     android:foregroundGravity="center"
-                    app:cardCornerRadius="180dp">
+                    app:cardCornerRadius="@dimen/dp_300">
 
 
                     <ImageView
-                        android:layout_width="@dimen/dp_30"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/dp_30"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_baseline_tag_24" />
@@ -546,7 +563,7 @@
                     android:id="@+id/textTv5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:layout_toRightOf="@id/hashTagCardView5"
                     android:maxLines="1"
                     android:text="DanceTrends"
@@ -561,7 +578,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textTv5"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:layout_toRightOf="@id/hashTagCardView5"
                     android:layout_marginRight="@dimen/dp_5"
                     android:maxLines="1"
@@ -603,7 +620,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_200"
             android:layout_below="@id/llHeaderBar5"
-            android:layout_marginTop="@dimen/dp_10"
             android:id="@+id/recyclerView_5">
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -617,6 +633,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="3"
+            android:layout_marginTop="@dimen/dp_20"
             android:layout_below="@id/recyclerView_5"
             android:orientation="horizontal">
 
@@ -632,15 +649,15 @@
                     android:id="@+id/hashTagCardView6"
                     android:layout_width="@dimen/dp_50"
                     android:layout_height="@dimen/dp_50"
-                    android:layout_marginLeft="@dimen/dp_15"
-
+                    android:layout_marginLeft="@dimen/dp_2"
+                    android:backgroundTint="@color/cream"
                     android:elevation="@dimen/dp_100"
                     android:foregroundGravity="center"
-                    app:cardCornerRadius="180dp">
+                    app:cardCornerRadius="@dimen/dp_300">
 
 
                     <ImageView
-                        android:layout_width="@dimen/dp_30"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/dp_30"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_baseline_tag_24" />
@@ -652,7 +669,7 @@
                     android:id="@+id/textTv6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:layout_toRightOf="@id/hashTagCardView6"
                     android:maxLines="1"
                     android:text="Nature"
@@ -667,7 +684,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textTv6"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:layout_toRightOf="@id/hashTagCardView6"
                     android:layout_marginRight="@dimen/dp_5"
                     android:maxLines="1"
@@ -709,7 +726,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_200"
             android:layout_below="@id/llHeaderBar6"
-            android:layout_marginTop="@dimen/dp_10"
             android:id="@+id/recyclerView_6">
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -721,6 +737,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="3"
+            android:layout_marginTop="@dimen/dp_20"
             android:layout_below="@id/recyclerView_6"
             android:orientation="horizontal">
 
@@ -736,14 +753,15 @@
                     android:id="@+id/hashTagCardView7"
                     android:layout_width="@dimen/dp_50"
                     android:layout_height="@dimen/dp_50"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_2"
                     android:elevation="@dimen/dp_100"
+                    android:backgroundTint="@color/cream"
                     android:foregroundGravity="center"
-                    app:cardCornerRadius="180dp">
+                    app:cardCornerRadius="@dimen/dp_300">
 
 
                     <ImageView
-                        android:layout_width="@dimen/dp_30"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/dp_30"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_baseline_tag_24" />
@@ -755,7 +773,7 @@
                     android:id="@+id/textTv7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:layout_toRightOf="@id/hashTagCardView7"
                     android:maxLines="1"
                     android:text="Travel"
@@ -770,7 +788,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textTv7"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:layout_toRightOf="@id/hashTagCardView7"
                     android:layout_marginRight="@dimen/dp_5"
                     android:maxLines="1"
@@ -812,7 +830,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_200"
             android:layout_below="@id/llHeaderBar7"
-            android:layout_marginTop="@dimen/dp_10"
             android:id="@+id/recyclerView_7">
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -825,6 +842,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="3"
+            android:layout_marginTop="@dimen/dp_20"
             android:layout_below="@id/recyclerView_7"
             android:orientation="horizontal">
 
@@ -840,14 +858,15 @@
                     android:id="@+id/hashTagCardView8"
                     android:layout_width="@dimen/dp_50"
                     android:layout_height="@dimen/dp_50"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_2"
                     android:elevation="@dimen/dp_100"
+                    android:backgroundTint="@color/cream"
                     android:foregroundGravity="center"
-                    app:cardCornerRadius="180dp">
+                    app:cardCornerRadius="@dimen/dp_300">
 
 
                     <ImageView
-                        android:layout_width="@dimen/dp_30"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/dp_30"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_baseline_tag_24" />
@@ -859,10 +878,10 @@
                     android:id="@+id/textTv8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:layout_toRightOf="@id/hashTagCardView8"
                     android:maxLines="1"
-                    android:text="Pop"
+                    android:text="WorkOut"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/sp_20"
                     android:textStyle="bold" />
@@ -875,7 +894,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textTv8"
                     android:paddingBottom="@dimen/dp_5"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:layout_toRightOf="@id/hashTagCardView8"
                     android:layout_marginRight="@dimen/dp_5"
                     android:maxLines="1"
@@ -916,7 +935,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_200"
             android:layout_below="@id/llHeaderBar8"
-            android:layout_marginTop="@dimen/dp_10"
             android:id="@+id/recyclerView_8">
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -928,6 +946,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="3"
+            android:layout_marginTop="@dimen/dp_20"
             android:layout_below="@id/recyclerView_8"
             android:orientation="horizontal">
 
@@ -943,14 +962,15 @@
                     android:id="@+id/hashTagCardView9"
                     android:layout_width="@dimen/dp_50"
                     android:layout_height="@dimen/dp_50"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_2"
                     android:elevation="@dimen/dp_100"
+                    android:backgroundTint="@color/cream"
                     android:foregroundGravity="center"
-                    app:cardCornerRadius="180dp">
+                    app:cardCornerRadius="@dimen/dp_300">
 
 
                     <ImageView
-                        android:layout_width="@dimen/dp_30"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/dp_30"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_baseline_tag_24" />
@@ -962,7 +982,7 @@
                     android:id="@+id/textTv9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:layout_toRightOf="@id/hashTagCardView9"
                     android:maxLines="1"
                     android:text="Marvel"
@@ -977,12 +997,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textTv9"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:layout_toRightOf="@id/hashTagCardView9"
                     android:layout_marginRight="@dimen/dp_5"
-                        android:maxLines="1"
+                    android:maxLines="1"
                     android:paddingBottom="@dimen/dp_5"
-                        android:text="Trending hashtag"
+                    android:text="Trending hashtag"
                     android:textColor="@color/grey"
                     android:textSize="@dimen/sp_15" />
             </RelativeLayout>
@@ -1019,7 +1039,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_200"
             android:layout_below="@id/llHeaderBar9"
-            android:layout_marginTop="@dimen/dp_10"
             android:id="@+id/recyclerView_9">
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -1032,6 +1051,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="3"
+            android:layout_marginTop="@dimen/dp_20"
             android:layout_below="@id/recyclerView_9"
             android:orientation="horizontal">
 
@@ -1047,14 +1067,15 @@
                     android:id="@+id/hashTagCardView10"
                     android:layout_width="@dimen/dp_50"
                     android:layout_height="@dimen/dp_50"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_2"
                     android:elevation="@dimen/dp_100"
+                    android:backgroundTint="@color/cream"
                     android:foregroundGravity="center"
-                    app:cardCornerRadius="180dp">
+                    app:cardCornerRadius="@dimen/dp_300">
 
 
                     <ImageView
-                        android:layout_width="@dimen/dp_30"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/dp_30"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_baseline_tag_24" />
@@ -1066,7 +1087,7 @@
                     android:id="@+id/textTv10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:layout_toRightOf="@id/hashTagCardView10"
                     android:maxLines="1"
                     android:text="WonderWoman"
@@ -1081,7 +1102,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textTv10"
-                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:layout_toRightOf="@id/hashTagCardView10"
                     android:layout_marginRight="@dimen/dp_5"
                     android:maxLines="1"
@@ -1122,15 +1143,14 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_200"
+            android:layout_marginBottom="@dimen/dp_10"
             android:layout_below="@id/llHeaderBar10"
-            android:layout_marginTop="@dimen/dp_10"
             android:id="@+id/recyclerView_10">
 
         </androidx.recyclerview.widget.RecyclerView>
-
-
+    </RelativeLayout>
+</ScrollView>
 
     </RelativeLayout>
 
 
-</ScrollView>
