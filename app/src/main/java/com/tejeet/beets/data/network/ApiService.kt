@@ -2,6 +2,7 @@ package com.tejeet.beets.data.network
 
 import com.tejeet.beets.data.model.StoryResponseDTO
 import com.tejeet.beets.data.model.upload.StoryUploadResponseDTO
+import com.tejeet.beets.ui.discover.data.modelClass.SearchResponse
 import com.tejeet.beets.utils.Constants.STORY_END_POINT
 import okhttp3.MultipartBody
 import retrofit2.Response
@@ -30,6 +31,7 @@ interface ApiService {
         @Part("storyDescription") storyDescription:String,
         @Part file: MultipartBody.Part
     ) : StoryUploadResponseDTO
+
 
 
 

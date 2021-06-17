@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/recyclerImage1"
+        android:id="@+id/recyclerImage7"
         android:scaleType="fitXY"
         android:layout_width="@dimen/dp_150"
         android:layout_height="@dimen/dp_200"/>
