@@ -237,7 +237,7 @@
                     android:layout_marginLeft="@dimen/dp_15"
                     android:layout_toRightOf="@id/hashTagCardView2"
                     android:maxLines="1"
-                    android:text="Jokes"
+                    android:text="Anime"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/sp_20"
                     android:textStyle="bold" />
@@ -342,7 +342,7 @@
                     android:layout_marginLeft="@dimen/dp_15"
                     android:layout_toRightOf="@id/hashTagCardView3"
                     android:maxLines="1"
-                    android:text="Music"
+                    android:text="K-Pop"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/sp_20"
                     android:textStyle="bold" />
@@ -445,7 +445,7 @@
                     android:layout_marginLeft="@dimen/dp_15"
                     android:layout_toRightOf="@id/hashTagCardView4"
                     android:maxLines="1"
-                    android:text="Dance"
+                    android:text="NoToRacism"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/sp_20"
                     android:textStyle="bold" />
@@ -549,7 +549,7 @@
                     android:layout_marginLeft="@dimen/dp_15"
                     android:layout_toRightOf="@id/hashTagCardView5"
                     android:maxLines="1"
-                    android:text="Pets"
+                    android:text="DanceTrends"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/sp_20"
                     android:textStyle="bold" />
@@ -655,7 +655,7 @@
                     android:layout_marginLeft="@dimen/dp_15"
                     android:layout_toRightOf="@id/hashTagCardView6"
                     android:maxLines="1"
-                    android:text="Dance"
+                    android:text="Nature"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/sp_20"
                     android:textStyle="bold" />
@@ -758,7 +758,7 @@
                     android:layout_marginLeft="@dimen/dp_15"
                     android:layout_toRightOf="@id/hashTagCardView7"
                     android:maxLines="1"
-                    android:text="Sports"
+                    android:text="Travel"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/sp_20"
                     android:textStyle="bold" />
@@ -862,7 +862,7 @@
                     android:layout_marginLeft="@dimen/dp_15"
                     android:layout_toRightOf="@id/hashTagCardView8"
                     android:maxLines="1"
-                    android:text="Anime"
+                    android:text="Pop"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/sp_20"
                     android:textStyle="bold" />
@@ -965,7 +965,7 @@
                     android:layout_marginLeft="@dimen/dp_15"
                     android:layout_toRightOf="@id/hashTagCardView9"
                     android:maxLines="1"
-                    android:text="Party"
+                    android:text="Marvel"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/sp_20"
                     android:textStyle="bold" />
@@ -1069,7 +1069,7 @@
                     android:layout_marginLeft="@dimen/dp_15"
                     android:layout_toRightOf="@id/hashTagCardView10"
                     android:maxLines="1"
-                    android:text="K-Pop"
+                    android:text="WonderWoman"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/sp_20"
                     android:textStyle="bold" />
