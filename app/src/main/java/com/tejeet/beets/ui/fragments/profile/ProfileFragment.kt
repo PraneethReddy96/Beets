@@ -1,4 +1,4 @@
-package com.tejeet.beets.ui.profile
+package com.tejeet.beets.ui.fragments.profile
 
 import android.content.Intent
 import android.os.Bundle
@@ -14,11 +14,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.tejeet.beets.R
@@ -26,11 +23,8 @@ import com.tejeet.beets.data.constant.AppPreferences
 import com.tejeet.beets.databinding.FragmentProfileBinding
 import com.tejeet.beets.ui.activities.main.viewmodel.MainViewModel
 import com.tejeet.beets.ui.fragments.profile.viewmodel.ProfileViewModel
-import com.tejeet.beets.ui.upload.post_video.PostVideoViewModel
 import com.tejeet.beets.utils.Constants.showStatusAndNavBar
-import com.tejeet.beets.utils.loadCenterCropImageFromUrl
 import com.tejeet.beets.utils.loadGlideImage
-import com.tejeet.beets.utils.loadImage
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

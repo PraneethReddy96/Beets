@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_discover" />
     <fragment
         android:id="@+id/navigation_me"
-        android:name="com.tejeet.beets.ui.profile.ProfileFragment"
+        android:name="com.tejeet.beets.ui.fragments.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
