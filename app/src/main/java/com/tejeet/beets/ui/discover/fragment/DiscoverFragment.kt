@@ -212,7 +212,7 @@ class DiscoverFragment : Fragment() {
 
 
 
-        discoverViewModel.callGifApi("Pop").observe(requireActivity(), Observer {
+        discoverViewModel.callGifApi("work out").observe(requireActivity(), Observer {
 
             dataItemList7.clear()
             dataItemList7.addAll(it)
