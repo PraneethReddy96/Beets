@@ -162,6 +162,8 @@ class ProfileFragment : Fragment(),MyVideosClickListener {
             val res = viewModel.updateFirebaseToken(AppPreferences.userEmail.toString(), AppPreferences.userFirebaseToken.toString())
             Log.d(TAG, "Response is ${res?.message}")
         }
+
+
     }
 
 

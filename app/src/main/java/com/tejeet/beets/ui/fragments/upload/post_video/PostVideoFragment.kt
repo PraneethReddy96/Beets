@@ -17,6 +17,7 @@ import androidx.navigation.fragment.navArgs
 import com.tejeet.beets.data.constant.AppPreferences
 import com.tejeet.beets.databinding.FragmentPostVideoBinding
 import com.tejeet.beets.exoplayer.Player
+import com.tejeet.beets.ui.activities.main.activity.MainActivity
 import com.tejeet.beets.ui.fragments.upload.post_successful.PostSuccessfulActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
@@ -94,7 +95,7 @@ class PostVideoFragment : Fragment() {
                 CoroutineScope(Dispatchers.Main).launch{
                     viewModel.uploadStory("1",AppPreferences.userDisplayName.toString(),
                         music.toString(), hashtag.toString(),desc.toString(),File(path))
-                    startActivity(Intent(activity, PostSuccessfulActivity::class.java))
+                    startActivity(Intent(activity, MainActivity::class.java))
                 }
             }
         }
