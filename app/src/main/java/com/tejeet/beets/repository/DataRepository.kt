@@ -2,7 +2,9 @@ package com.tejeet.beets.repository
 
 
 import com.nero.mint.data.remote.RetrofitGenerator
+import com.tejeet.beets.data.constants.GetAllUserResponseDTO
 import com.tejeet.beets.data.modelDTO.FirebaseTokenUpdateResponseDTO
+import com.tejeet.beets.data.modelDTO.LikeStoryResponseDTO
 import com.tejeet.beets.data.modelDTO.StoriesData
 import com.tejeet.beets.data.modelDTO.UserSignupDTO
 import com.tejeet.beets.data.modelDTO.upload.StoryUploadResponseDTO
@@ -83,6 +85,25 @@ class DataRepository @Inject constructor(private val apiService: ApiService) {
         val response = apiService.signupUser("OK", API_KEY, email, displayName, userName , userProfile, firebaseToken )
         return response.body()
 
+    }
+
+
+    suspend fun likeStoryPost(
+        storyId: String,
+        likeCount : String,
+        userID : String
+    ): LikeStoryResponseDTO? {
+
+        val response = apiService.likeStory("OK", API_KEY, storyId,likeCount, userID)
+        return response.body()
+    }
+
+    suspend fun getAllUsers(
+        userID : String
+    ): GetAllUserResponseDTO? {
+
+        val response = apiService.getAllUsers("OK", API_KEY, userID)
+        return response.body()
     }
 
 

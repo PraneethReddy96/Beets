@@ -1,7 +1,9 @@
 package com.tejeet.beets.data.network
 
 import androidx.lifecycle.LiveData
+import com.tejeet.beets.data.constants.GetAllUserResponseDTO
 import com.tejeet.beets.data.modelDTO.FirebaseTokenUpdateResponseDTO
+import com.tejeet.beets.data.modelDTO.LikeStoryResponseDTO
 import com.tejeet.beets.data.modelDTO.StoryResponseDTO
 import com.tejeet.beets.data.modelDTO.UserSignupDTO
 import com.tejeet.beets.data.modelDTO.upload.StoryUploadResponseDTO
@@ -45,7 +47,7 @@ interface ApiService {
 
     @GET(STORY_END_POINT)
     suspend fun signupUser(
-        @Query("userSignup") getPost : String,
+        @Query("userSignup") userSignup : String,
         @Query("trustedAppKey") trustedAppKey:String,
         @Query("userEmail") userEmail : String,
         @Query("displayName") displayName : String,
@@ -53,6 +55,23 @@ interface ApiService {
         @Query("userProfile") userProfileImage : String,
         @Query("firebasetoken") firebaseToken : String
     ): Response<UserSignupDTO>
+
+
+    @GET(STORY_END_POINT)
+    suspend fun likeStory(
+        @Query("likeStory") likePost : String,
+        @Query("trustedAppKey") trustedAppKey:String,
+        @Query("storyID") storyID : String,
+        @Query("likeCount") LikeCount : String,
+        @Query("userID") userID : String
+    ): Response<LikeStoryResponseDTO>
+
+    @GET(STORY_END_POINT)
+    suspend fun getAllUsers(
+        @Query("getUsers") getUser : String,
+        @Query("trustedAppKey") trustedAppKey:String,
+        @Query("userID") userID : String
+    ): Response<GetAllUserResponseDTO>
 
 
 

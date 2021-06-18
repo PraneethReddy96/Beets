@@ -3,6 +3,7 @@ package com.tejeet.beets.ui.story
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,13 +22,20 @@ import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.google.android.exoplayer2.upstream.cache.CacheDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.tejeet.beets.R
+import com.tejeet.beets.data.constant.AppPreferences
 import com.tejeet.beets.data.modelDTO.StoriesData
 import com.tejeet.beets.databinding.FragmentStoryViewBinding
 import com.tejeet.beets.ui.fragments.upload.preview_video.PreviewFragmentArgs
 import com.tejeet.beets.utils.*
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
+
+    private val TAG = "tag"
     private var storyUrl: String? = null
     private var storieData: StoriesData? = null
 
@@ -51,6 +59,7 @@ class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
     private val mainViewModel: MainViewModel by viewModels()
     private val binding get() = _binding!!
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -61,11 +70,30 @@ class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
 
          storieData = arguments?.getParcelable(Constants.KEY_STORY_DATA)
 
+        binding.imageViewOptionLike.setOnClickListener {
+
+            Log.d(TAG, "Liked Post ${storieData?.storyId}")
+            binding.imageViewOptionLike.setBackgroundResource(R.drawable.ic_heart_icon_liked)
+            binding.imageViewOptionLikeTitle.text = (storieData?.likesCount?.toInt()?.plus(1)).toString()
+
+        }
+
+        binding.imageViewOptionLike.setOnClickListener {
+
+            CoroutineScope(Dispatchers.Main).launch {
+            val response = mainViewModel.likePost(storieData?.storyId.toString(), storieData?.likesCount.toString(), AppPreferences.userID.toString())
+                Log.d(TAG, "Like Response is ${response?.message}")
+            }
+        }
+
         setData()
         return  binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
 
 
     }
@@ -75,9 +103,9 @@ class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
         binding.textViewVideoDescription.setTextOrHide(value = storieData?.storyDescription)
         binding.textViewMusicTitle.setTextOrHide(value = storieData?.musicCoverTitle)
 
-        binding.imageViewOptionCommentTitle.text = "123"
+        binding.imageViewOptionCommentTitle.text = storieData?.commentsCount
 
-        binding.imageViewOptionLikeTitle.text = "1222"
+        binding.imageViewOptionLikeTitle.text = storieData?.likesCount
       //  storieData?.likesCount?.formatNumberAsReadableFormat()
 
         binding.imageViewProfilePic.loadCenterCropImageFromUrl(storieData?.userProfilePicUrl)
