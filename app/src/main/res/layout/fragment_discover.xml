@@ -15,7 +15,7 @@
 
 
         <ImageView
-            android:id="@+id/discoverPageAddUser"
+            android:id="@+id/inboxPageAddUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -25,23 +25,23 @@
             android:src="@drawable/ic_add_user" />
 
         <ImageView
-            android:id="@+id/discoverPageSearchBtn"
+            android:id="@+id/inboxPageSearchBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_35"
-            android:layout_toRightOf="@id/discoverPageAddUser"
+            android:layout_toRightOf="@id/inboxPageAddUser"
             android:background="@drawable/rectangle"
             android:padding="8dp"
             android:src="@drawable/ic_loupe__2_" />
 
         <EditText
-            android:id="@+id/discoverPageSearchBar"
+            android:id="@+id/inboxPageSearchBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_35"
             android:layout_marginRight="@dimen/dp_5"
-            android:layout_toLeftOf="@id/discoverBarCode"
-            android:layout_toRightOf="@id/discoverPageSearchBtn"
+            android:layout_toLeftOf="@id/inboxBarCode"
+            android:layout_toRightOf="@id/inboxPageSearchBtn"
             android:background="@drawable/rectangle"
             android:hint="Hello, Masai School!"
             android:maxLines="1"
@@ -50,7 +50,7 @@
             android:textSize="18sp" />
 
         <ImageView
-            android:id="@+id/discoverBarCode"
+            android:id="@+id/inboxBarCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"

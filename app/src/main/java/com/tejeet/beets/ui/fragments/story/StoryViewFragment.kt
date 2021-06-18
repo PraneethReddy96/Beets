@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.widget.ImageViewCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -23,6 +25,7 @@ import com.google.android.exoplayer2.util.Util
 import com.tejeet.beets.R
 import com.tejeet.beets.data.modelDTO.StoriesData
 import com.tejeet.beets.databinding.FragmentStoryViewBinding
+import com.tejeet.beets.ui.binding_adapters.changeVideoLikedIcon
 import com.tejeet.beets.ui.fragments.upload.preview_video.PreviewFragmentArgs
 import com.tejeet.beets.utils.*
 
@@ -31,6 +34,7 @@ class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
     private var storyUrl: String? = null
     private var storieData: StoriesData? = null
 
+    private var liked = false
 
     private var simplePlayer: SimpleExoPlayer? = null
     private var cacheDataSourceFactory: CacheDataSourceFactory? = null
@@ -62,12 +66,21 @@ class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
          storieData = arguments?.getParcelable(Constants.KEY_STORY_DATA)
 
         setData()
+
         return  binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
+        binding.imageViewOptionLike.setOnClickListener {
+
+            if(liked){
+
+            }
+            
+
+        }
     }
 
     private fun setData() {
