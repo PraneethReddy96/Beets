@@ -15,7 +15,7 @@ class MyApp: Application() {
         var simpleCache: SimpleCache? = null
         var context: Context? = null
     }
-
+//
 
     override fun onCreate() {
         super.onCreate()
