@@ -213,6 +213,7 @@ class ProfileFragment : Fragment(),MyVideosClickListener {
                 CoroutineScope(Dispatchers.IO).launch {
                     var response = viewModel.signupUserAccount(AppPreferences.userDisplayName.toString(), AppPreferences.userName.toString(),AppPreferences.userEmail.toString(), AppPreferences.userProfile.toString(), AppPreferences.userFirebaseToken.toString())
                     Log.d(TAG, "Response is ${response?.message}")
+                    AppPreferences.userID = response?.userID?.toInt()
                 }
 
                 CoroutineScope(Dispatchers.IO).launch {
