@@ -54,6 +54,7 @@ object NetworkModule {
     }
 
 
+
 //     how we previously create retrofit Network class
 
 //    private val httpLoggingInterceptor: HttpLoggingInterceptor =

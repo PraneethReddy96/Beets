@@ -1,4 +1,4 @@
-package com.tejeet.beets.ui.inbox
+package com.tejeet.beets.ui.fragments.inbox
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.tejeet.beets.R
+import com.tejeet.beets.data.constants.UsersData
 import com.tejeet.beets.ui.discover.data.modelClass.DataItem
 
-class InboxAdapter(val dataItemList: MutableList<DataItem?>):RecyclerView.Adapter<InboxAdapter.InboxViewHolder>() {
+class InboxAdapter(var dataItemList: MutableList<UsersData>):RecyclerView.Adapter<InboxAdapter.InboxViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InboxViewHolder {
@@ -19,13 +20,18 @@ class InboxAdapter(val dataItemList: MutableList<DataItem?>):RecyclerView.Adapte
     }
 
     override fun onBindViewHolder(holder: InboxViewHolder, position: Int) {
-        Glide.with(holder.tvUserImage).load(dataItemList[position]).into(holder.tvUserImage)
+        Glide.with(holder.tvUserImage).load(dataItemList[position].profileImg).into(holder.tvUserImage)
 
-        holder.tvUserName.text = dataItemList[position]
+         holder.tvUserName.text = dataItemList[position].name
     }
 
     override fun getItemCount(): Int {
         return  dataItemList.size
+    }
+
+    fun updateList(newDataList:MutableList<UsersData>){
+        dataItemList = newDataList
+        notifyDataSetChanged()
     }
 
 

@@ -6,11 +6,16 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import androidx.lifecycle.*
+import com.tejeet.beets.data.constants.GetAllUserResponseDTO
+import com.tejeet.beets.data.modelDTO.LikeStoryResponseDTO
 import com.tejeet.beets.data.modelDTO.StoriesData
+import com.tejeet.beets.data.modelDTO.UserSignupDTO
 import com.tejeet.beets.model.ResultData
 import com.tejeet.beets.repository.DataRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
@@ -21,6 +26,7 @@ class MainViewModel @Inject constructor(
     ): AndroidViewModel(application) {
 
     fun getDataList(): LiveData<ResultData<MutableList<StoriesData>?>> {
+
 
             return flow {
                 emit(ResultData.Loading())
@@ -48,4 +54,29 @@ class MainViewModel @Inject constructor(
             else -> false;
         }
     }
+
+
+    suspend fun likePost(storyId: String, likeCount : String, userID : String) : LikeStoryResponseDTO?{
+        var likePostResponse = CoroutineScope(Dispatchers.IO).async {
+            dataRepository.likeStoryPost(storyId,likeCount,userID)
+        }
+        return likePostResponse.await()
+    }
+
+    suspend fun getAllUser(userId:String): LiveData<ResultData<GetAllUserResponseDTO?>> {
+
+        return flow {
+            emit(ResultData.Loading())
+            if (hasInternetConnection()){
+                emit(ResultData.Success(dataRepository.getAllUsers(userId)))
+            }else{
+                emit(ResultData.Exception("NO Internet Connection"))
+            }
+
+        }.asLiveData(Dispatchers.IO)
+
+    }
+
+
+
 }

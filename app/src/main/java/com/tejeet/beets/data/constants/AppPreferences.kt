@@ -18,6 +18,7 @@ object AppPreferences {
 
     private val VIBRATION_STATUS_KEY = "user_vibration_status_key"
     private val SOUND_STATUS_KEY = "sound_status_key"
+    private val USER_ID_KEY = "user_id-key"
     private val USER_NAME_KEY = "user_name_key"
     private val USER_DISPLAY_NAME_KEY = "user_display_name_key"
     private val USER_EMAIL_KEY = "user_email_key"
@@ -49,6 +50,14 @@ object AppPreferences {
         editor.putString(USER_PROFILE_URL_KEY,pProfileURL)
         editor.apply()
     }
+
+    var userID : Int?
+        get() = preferences.getInt(USER_ID_KEY, 0)
+        set(value) = preferences.edit {
+            if (value != null) {
+                it.putInt(USER_ID_KEY, value)
+            }
+        }
 
     var userDisplayName : String?
         get() = preferences.getString(USER_DISPLAY_NAME_KEY, "-")

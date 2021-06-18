@@ -1,4 +1,4 @@
-package com.tejeet.beets.ui.inbox
+package com.tejeet.beets.ui.fragments.inbox
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

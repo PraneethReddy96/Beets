@@ -4,48 +4,44 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:paddingTop="4dp"
-    android:paddingBottom="4dp">
+    android:layout_marginTop="@dimen/dp_30"
+    android:layout_marginStart="@dimen/dp_10"
+    android:layout_marginEnd="@dimen/dp_10"
+    >
 
-
-    <ImageView
-        android:id="@+id/plain_search_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="6dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_search" />
 
     <TextView
         android:id="@+id/search_suggestion_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="andre_max"
-        android:layout_marginStart="2dp"
+        android:layout_marginStart="16dp"
         android:fontFamily="@font/cabin"
-        app:layout_constraintBottom_toBottomOf="@+id/plain_search_icon"
-        app:layout_constraintStart_toEndOf="@+id/plain_search_icon"
-        app:layout_constraintTop_toTopOf="@+id/plain_search_icon" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/search_suggestion_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="andre_max" />
 
-    <ImageView
+    <Button
         android:id="@+id/add_search_suggestion"
-        android:layout_width="28dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_30"
+        android:background="@color/pink"
         android:padding="6dp"
-        app:layout_constraintBottom_toBottomOf="@+id/plain_search_icon"
+        android:text="@string/follow"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/plain_search_icon"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_call_missed" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/search_suggestion_icon"
-        android:layout_width="26dp"
-        android:layout_height="26dp"
-        android:layout_marginEnd="26dp"
-        app:layout_constraintBottom_toBottomOf="@+id/plain_search_icon"
-        app:layout_constraintEnd_toStartOf="@+id/add_search_suggestion"
-        app:layout_constraintTop_toTopOf="@+id/plain_search_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         tools:src="@tools:sample/avatars"
         tools:srcCompat="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>

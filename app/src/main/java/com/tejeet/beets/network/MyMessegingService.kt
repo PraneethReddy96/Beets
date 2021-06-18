@@ -32,7 +32,7 @@ class MyMessagingService() : FirebaseMessagingService() {
 
 
 
-        Log.d(TAG, "Message Notification Body: " + remoteMessage.notification!!.body)
+        //Log.d(TAG, "Message Notification Body: " + remoteMessage.notification!!.body)
 
 
 

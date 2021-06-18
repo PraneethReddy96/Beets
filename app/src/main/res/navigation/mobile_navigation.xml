@@ -64,4 +64,9 @@
             android:name="story_data"
             app:argType="com.tejeet.beets.data.modelDTO.StoriesData" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_inbox"
+        android:name="com.tejeet.beets.ui.fragments.inbox.InboxFragment"
+        android:label="fragment_inbox"
+        tools:layout="@layout/fragment_inbox" />
 </navigation>
