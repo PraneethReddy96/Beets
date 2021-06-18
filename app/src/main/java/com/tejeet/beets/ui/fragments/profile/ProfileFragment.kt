@@ -6,21 +6,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
-import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.tejeet.beets.R
@@ -29,11 +26,8 @@ import com.tejeet.beets.data.modelDTO.StoriesData
 import com.tejeet.beets.databinding.FragmentProfileBinding
 import com.tejeet.beets.model.ResultData
 import com.tejeet.beets.ui.activities.main.viewmodel.MainViewModel
-import com.tejeet.beets.ui.discover.data.SliderModel
 import com.tejeet.beets.ui.fragments.profile.adapter.MyVideosAdapter
 import com.tejeet.beets.ui.fragments.profile.viewmodel.ProfileViewModel
-import com.tejeet.beets.ui.home.adapter.StoriesPagerAdapter
-import com.tejeet.beets.ui.story.StoryViewFragment
 import com.tejeet.beets.utils.Constants.showStatusAndNavBar
 import com.tejeet.beets.utils.ResUtils
 import com.tejeet.beets.utils.ViewUtils
@@ -211,13 +205,19 @@ class ProfileFragment : Fragment(),MyVideosClickListener {
 
                 loadGlideImage(binding.userPhoto, account?.photoUrl.toString())
 
-                AppPreferences.setUser(account.displayName.toString(), account.email.toString(), account.photoUrl.toString())
+                AppPreferences.setUser(account.displayName.toString(),account.givenName.toString(), account.email.toString(), account.photoUrl.toString())
                 AppPreferences.isLoggedIn = "YES"
+
+                CoroutineScope(Dispatchers.IO).launch {
+                    var response = viewModel.signupUserAccount(AppPreferences.userDisplayName.toString(), AppPreferences.userName.toString(),AppPreferences.userEmail.toString(), AppPreferences.userProfile.toString(), AppPreferences.userFirebaseToken.toString())
+                    Log.d(TAG, "Response is ${response?.message}")
+                }
 
                 CoroutineScope(Dispatchers.IO).launch {
                     val res = viewModel.updateFirebaseToken(AppPreferences.userEmail.toString(), AppPreferences.userFirebaseToken.toString())
                     Log.d(TAG, "Response is ${res?.message}")
                 }
+
             }
         } catch (e: ApiException){
             Log.d(TAG, "handleResult: ${e.toString()}")

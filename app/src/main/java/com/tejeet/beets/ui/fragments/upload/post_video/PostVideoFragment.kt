@@ -92,7 +92,7 @@ class PostVideoFragment : Fragment() {
                 binding.playerView.visibility = View.GONE
                 binding.postBtn.visibility = View.GONE
                 CoroutineScope(Dispatchers.Main).launch{
-                    viewModel.uploadStory("1",AppPreferences.userEmail.toString(),
+                    viewModel.uploadStory("1",AppPreferences.userDisplayName.toString(),
                         music.toString(), hashtag.toString(),desc.toString(),File(path))
                     startActivity(Intent(activity, PostSuccessfulActivity::class.java))
                 }

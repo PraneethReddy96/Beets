@@ -3,6 +3,7 @@ package com.tejeet.beets.data.network
 import androidx.lifecycle.LiveData
 import com.tejeet.beets.data.modelDTO.FirebaseTokenUpdateResponseDTO
 import com.tejeet.beets.data.modelDTO.StoryResponseDTO
+import com.tejeet.beets.data.modelDTO.UserSignupDTO
 import com.tejeet.beets.data.modelDTO.upload.StoryUploadResponseDTO
 import com.tejeet.beets.utils.Constants.STORY_END_POINT
 import okhttp3.MultipartBody
@@ -41,6 +42,18 @@ interface ApiService {
         @Query("userEmail") userEmail : String,
         @Query("firebasetoken") firebaseToken : String
     ): Response<FirebaseTokenUpdateResponseDTO>
+
+    @GET(STORY_END_POINT)
+    suspend fun signupUser(
+        @Query("userSignup") getPost : String,
+        @Query("trustedAppKey") trustedAppKey:String,
+        @Query("userEmail") userEmail : String,
+        @Query("displayName") displayName : String,
+        @Query("userName") userName : String,
+        @Query("userProfile") userProfileImage : String,
+        @Query("firebasetoken") firebaseToken : String
+    ): Response<UserSignupDTO>
+
 
 
 }

@@ -4,6 +4,7 @@ package com.tejeet.beets.repository
 import com.nero.mint.data.remote.RetrofitGenerator
 import com.tejeet.beets.data.modelDTO.FirebaseTokenUpdateResponseDTO
 import com.tejeet.beets.data.modelDTO.StoriesData
+import com.tejeet.beets.data.modelDTO.UserSignupDTO
 import com.tejeet.beets.data.modelDTO.upload.StoryUploadResponseDTO
 import com.tejeet.beets.data.network.ApiService
 import com.tejeet.beets.ui.discover.data.apiClient
@@ -70,5 +71,19 @@ class DataRepository @Inject constructor(private val apiService: ApiService) {
         return response.body()
 
     }
+
+    suspend fun updateSignUPAccount(
+        displayName: String,
+        userName : String,
+        email : String,
+        userProfile : String,
+        firebaseToken : String
+    ): UserSignupDTO? {
+
+        val response = apiService.signupUser("OK", API_KEY, email, displayName, userName , userProfile, firebaseToken )
+        return response.body()
+
+    }
+
 
 }
