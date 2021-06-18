@@ -1,4 +1,4 @@
-package com.tejeet.beets.ui.story
+package com.tejeet.beets.ui.fragments.profile
 
 import android.graphics.drawable.Drawable
 import android.net.Uri
@@ -23,22 +23,21 @@ import com.google.android.exoplayer2.util.Util
 import com.tejeet.beets.R
 import com.tejeet.beets.data.modelDTO.StoriesData
 import com.tejeet.beets.databinding.FragmentStoryViewBinding
-import com.tejeet.beets.ui.fragments.upload.preview_video.PreviewFragmentArgs
 import com.tejeet.beets.utils.*
 
 
-class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
+class StoryViewFragmentForProfile : Fragment(R.layout.fragment_story_view) {
     private var storyUrl: String? = null
     private var storieData: StoriesData? = null
 
-
+    private val args by navArgs<StoryViewFragmentForProfileArgs>()
     private var simplePlayer: SimpleExoPlayer? = null
     private var cacheDataSourceFactory: CacheDataSourceFactory? = null
     private val simpleCache = MyApp.simpleCache
     private var toPlayVideoPosition: Int = -1
 
     companion object {
-        fun newInstance(storiesData: StoriesData) = StoryViewFragment()
+        fun newInstance(storiesData: StoriesData) = StoryViewFragmentForProfile()
             .apply {
                 arguments = Bundle().apply {
                     putParcelable(Constants.KEY_STORY_DATA, storiesData)
@@ -58,8 +57,7 @@ class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
     ): View {
         _binding = FragmentStoryViewBinding.inflate(inflater,container,false)
 
-
-         storieData = arguments?.getParcelable(Constants.KEY_STORY_DATA)
+            storieData = args.storyData
 
         setData()
         return  binding.root

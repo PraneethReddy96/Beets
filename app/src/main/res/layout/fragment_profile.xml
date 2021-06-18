@@ -171,44 +171,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewpager"
-                android:layout_width="0dp"
-                android:layout_height="240dp"
-                android:background="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profile_tab_layout" />
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/profile_tab_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:theme="@style/TabAppearance"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_profile_btn"
-                app:tabBackground="@android:color/white"
-                app:tabSelectedTextColor="@color/colorBlack"
-                app:tabTextColor="@color/medium_grey">
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/my_videos" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/my_private_videos" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/my_liked_videos" />
-            </com.google.android.material.tabs.TabLayout>
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/user_photo"
@@ -220,6 +182,53 @@
                 app:layout_constraintTop_toBottomOf="@+id/line"
                 tools:ignore="MissingClass"
                 tools:src="@drawable/white_person_icon" />
+
+
+            <TextView
+                android:id="@+id/tvMyVideos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/my_videos"
+                android:textColor="@color/colorBlack"
+                android:background="@color/light_grey"
+                app:layout_constraintTop_toBottomOf="@+id/edit_profile_btn"
+                android:textSize="20sp"
+                android:padding="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_10"
+                android:gravity="center"/>
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/myVideosRecyclerView"
+               android:layout_width="match_parent"
+               android:layout_height="300dp"
+               android:layout_marginTop="@dimen/dp_10"
+               app:layout_constraintTop_toBottomOf="@+id/tvMyVideos"/>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie_loader_animation"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvMyVideos"
+                app:lottie_rawRes="@raw/tiktokloader"
+                app:lottie_loop="true"
+                android:visibility="visible"
+                app:lottie_autoPlay="true"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie_no_internet_connection"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvMyVideos"
+                app:lottie_rawRes="@raw/no_internet_connection"
+                app:lottie_loop="true"
+                android:visibility="invisible"
+                app:lottie_autoPlay="true"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

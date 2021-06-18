@@ -19,7 +19,11 @@
         android:id="@+id/navigation_me"
         android:name="com.tejeet.beets.ui.fragments.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_navigation_me_to_storyViewFragment"
+            app:destination="@id/storyViewFragmentForProfile" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_record"
         android:name="com.tejeet.beets.ui.fragments.upload.record.RecordVideoFragment"
@@ -50,5 +54,14 @@
         <argument
             android:name="localVideo"
             app:argType="com.tejeet.beets.data.modelDTO.upload.LocalVideo" />
+    </fragment>
+    <fragment
+        android:id="@+id/storyViewFragmentForProfile"
+        android:name="com.tejeet.beets.ui.fragments.profile.StoryViewFragmentForProfile"
+        android:label="fragment_story_view"
+        tools:layout="@layout/fragment_story_view" >
+        <argument
+            android:name="story_data"
+            app:argType="com.tejeet.beets.data.modelDTO.StoriesData" />
     </fragment>
 </navigation>

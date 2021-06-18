@@ -6,9 +6,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -20,10 +25,20 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.tejeet.beets.R
 import com.tejeet.beets.data.constant.AppPreferences
+import com.tejeet.beets.data.modelDTO.StoriesData
 import com.tejeet.beets.databinding.FragmentProfileBinding
+import com.tejeet.beets.model.ResultData
 import com.tejeet.beets.ui.activities.main.viewmodel.MainViewModel
+import com.tejeet.beets.ui.discover.data.SliderModel
+import com.tejeet.beets.ui.fragments.profile.adapter.MyVideosAdapter
 import com.tejeet.beets.ui.fragments.profile.viewmodel.ProfileViewModel
+import com.tejeet.beets.ui.home.adapter.StoriesPagerAdapter
+import com.tejeet.beets.ui.story.StoryViewFragment
 import com.tejeet.beets.utils.Constants.showStatusAndNavBar
+import com.tejeet.beets.utils.ResUtils
+import com.tejeet.beets.utils.ViewUtils
+import com.tejeet.beets.utils.ViewUtils.changeStatusBarColor
+import com.tejeet.beets.utils.ViewUtils.showStatusBar
 import com.tejeet.beets.utils.loadGlideImage
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -33,9 +48,11 @@ import timber.log.Timber
 
 
 @AndroidEntryPoint
-class ProfileFragment : Fragment() {
+class ProfileFragment : Fragment(),MyVideosClickListener {
 
     private val TAG = "tag"
+    lateinit var myVideosAdapter: MyVideosAdapter
+    val dataList: MutableList<StoriesData> = mutableListOf()
 
     lateinit var mGoogleSignInClient: GoogleSignInClient
     val Req_Code:Int=123
@@ -57,33 +74,51 @@ class ProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
 
+        setRecyclerView()
+
         showStatusAndNavBar(requireActivity())
 
-        binding.viewpager.apply {
-  //          adapter = MyFragmentStateAdapter()
-//            registerOnPageChangeCallback(onPageChangedCallback)
-        }
-
-        val tabConfigurationStrategy =
-            TabLayoutMediator.TabConfigurationStrategy { tab, position ->
-                Timber.d("tab is $tab and tab position is $position")
-                tab.text = getString(
-                    when (position) {
-                        0 -> R.string.my_videos
-                        1 -> R.string.my_private_videos
-                        2 -> R.string.my_liked_videos
-                        else -> throw IndexOutOfBoundsException("position was $position")
-                    }
-                )
-            }
-//        TabLayoutMediator(binding.profileTabLayout, binding.viewpager, tabConfigurationStrategy)
-//            .attach()
 
         return binding.root
     }
 
+    private fun setRecyclerView() {
+        myVideosAdapter = MyVideosAdapter(dataList,this)
+        binding.myVideosRecyclerView.layoutManager = GridLayoutManager(requireContext(),3)
+        binding.myVideosRecyclerView.adapter = myVideosAdapter
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        if (AppPreferences.isLoggedIn.equals("YES")){
+
+            mainViewModel.getDataList().observe(viewLifecycleOwner, Observer {value->
+                when(value) {
+                    is ResultData.Loading -> {
+                        binding.lottieLoaderAnimation.visibility = View.VISIBLE
+                        binding.lottieNoInternetConnection.visibility = View.GONE
+
+                    }
+                    is ResultData.Success -> {
+
+                        if (!value.data.isNullOrEmpty()) {
+                            val dataList = value.data
+                            myVideosAdapter.setData(dataList)
+                            binding.lottieLoaderAnimation.visibility = View.GONE
+                            binding.lottieNoInternetConnection.visibility = View.GONE
+                        }
+                    }
+                    is ResultData.Exception ->{
+                        binding.lottieLoaderAnimation.visibility = View.GONE
+                        binding.lottieNoInternetConnection.visibility = View.GONE
+                        ResUtils.showSnackBar(requireView(), value.nothing.toString())
+                        ViewUtils.changeStatusBarColor(requireActivity(), R.color.colorBlack)
+                    }
+                }
+            })
+        }
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -183,10 +218,6 @@ class ProfileFragment : Fragment() {
                     val res = viewModel.updateFirebaseToken(AppPreferences.userEmail.toString(), AppPreferences.userFirebaseToken.toString())
                     Log.d(TAG, "Response is ${res?.message}")
                 }
-
-
-
-
             }
         } catch (e: ApiException){
             Log.d(TAG, "handleResult: ${e.toString()}")
@@ -204,32 +235,17 @@ class ProfileFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        showStatusBar(requireActivity())
+        changeStatusBarColor(requireActivity(),R.color.colorBlack)
+    }
 
+    override fun onItemClicked(storiesData: StoriesData) {
+        findNavController().navigate(
+            ProfileFragmentDirections.actionNavigationMeToStoryViewFragment(storiesData)
+        )
+    }
 
-//    class MyFragmentStateAdapter(
-//        private val profileWithAccountFragment: ProfileWithAccountFragment
-//    ) : FragmentStateAdapter(profileWithAccountFragment) {
-//
-//        /*
-//        If the profile Uid represents the current user, show him everything
-//        If the profile user wants to show their liked videos, show the current user the first two: public and liked videos
-//        Otherwise, show only the public videos
-//         */
-//        override fun getItemCount(): Int = when {
-//            profileWithAccountFragment.args.uid == Firebase.auth.uid -> 3
-//            profileWithAccountFragment.viewModel.profileUser.value?.showLikedVideos == true -> 2
-//            else -> 1
-//        }
-//
-//        override fun createFragment(position: Int): Fragment {
-//            val uid = profileWithAccountFragment.args.uid
-//            return when (position) {
-//                0 -> ProfileVideoTab.getInstance(uid, VideoType.PUBLIC)
-//                1 -> ProfileVideoTab.getInstance(uid, VideoType.LIKED)
-//                2 -> ProfileVideoTab.getInstance(uid, VideoType.PRIVATE)
-//                else -> throw ArrayIndexOutOfBoundsException(position)
-//            }
-//        }
-//    }
 
 }
