@@ -64,7 +64,6 @@ class DiscoverFragment : Fragment() {
 
 
             R.drawable.imageslider2,
-            R.drawable.imageslider,
             R.drawable.imageslider3,
             R.drawable.imageslider1,
             R.drawable.imageslider4,
