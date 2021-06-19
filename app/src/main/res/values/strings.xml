@@ -56,6 +56,9 @@
     <string name="post">Post</string>
     <string name="drafts">Drafts</string>
     <string name="set_your_description">Set Your Description</string>
+    <string name="content_activity"><![CDATA[Content & Activity]]></string>
+    <string name="CONTENT"><![CDATA[CONTENT & ACTIVITY]]></string>
+    <string name="cache_cellular_data"><![CDATA[CACHE & CELLULAR DATA]]></string>
 
 
 </resources>
