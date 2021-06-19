@@ -38,11 +38,6 @@ class InboxFragment : Fragment() {
     val dataList: MutableList<UsersData> = mutableListOf()
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,10 +46,6 @@ class InboxFragment : Fragment() {
         _binding =  FragmentInboxBinding.inflate(inflater, container, false)
 
         AppPreferences.init(requireContext())
-
-
-
-
 
 
         return binding.root
@@ -74,7 +65,6 @@ class InboxFragment : Fragment() {
                         is ResultData.Loading -> {
                             binding.lottieLoaderAnimation.visibility = View.VISIBLE
                             binding.lottieNoInternetConnection.visibility = View.GONE
-                            ViewUtils.changeStatusBarColor(requireActivity(), R.color.colorBlack)
 
                         }
                         is ResultData.Success -> {
@@ -89,7 +79,6 @@ class InboxFragment : Fragment() {
                             ResUtils.showSnackBar(requireView(), value.nothing.toString())
                             binding.lottieLoaderAnimation.visibility = View.GONE
                             binding.lottieNoInternetConnection.visibility = View.VISIBLE
-                            ViewUtils.changeStatusBarColor(requireActivity(), R.color.colorBlack)
                         }
                     }
                 })
@@ -108,6 +97,7 @@ class InboxFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         showStatusBar(requireActivity())
+        ViewUtils.changeStatusBarColor(requireActivity(), R.color.colorBlack)
     }
 
     override fun onDestroyView() {
