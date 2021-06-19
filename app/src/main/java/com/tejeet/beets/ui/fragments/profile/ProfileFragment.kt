@@ -12,6 +12,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.SnapHelper
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -27,7 +30,9 @@ import com.tejeet.beets.databinding.FragmentProfileBinding
 import com.tejeet.beets.model.ResultData
 import com.tejeet.beets.ui.Settings.settingsActivity
 import com.tejeet.beets.ui.activities.main.viewmodel.MainViewModel
-import com.tejeet.beets.ui.fragments.profile.adapter.MyVideosAdapter
+import com.tejeet.beets.ui.fragments.profile.autoplay_video.PlayerViewAdapter
+import com.tejeet.beets.ui.fragments.profile.autoplay_video.RecyclerViewScrollListener
+import com.tejeet.beets.ui.fragments.profile.autoplay_video.TikTokRecyclerAdapter
 import com.tejeet.beets.ui.fragments.profile.viewmodel.ProfileViewModel
 import com.tejeet.beets.utils.Constants.showStatusAndNavBar
 import com.tejeet.beets.utils.ResUtils
@@ -43,10 +48,14 @@ import timber.log.Timber
 
 
 @AndroidEntryPoint
-class ProfileFragment : Fragment(),MyVideosClickListener {
+class ProfileFragment : Fragment() {
 
     private val TAG = "tag"
-    lateinit var myVideosAdapter: MyVideosAdapter
+    //lateinit var myVideosAdapter: MyVideosAdapter
+    lateinit var myTikTokAdapter: TikTokRecyclerAdapter
+  //  private lateinit var scrollListener: RecyclerViewScrollListener
+
+
     val dataList: MutableList<StoriesData> = mutableListOf()
 
     lateinit var mGoogleSignInClient: GoogleSignInClient
@@ -78,9 +87,34 @@ class ProfileFragment : Fragment(),MyVideosClickListener {
     }
 
     private fun setRecyclerView() {
-        myVideosAdapter = MyVideosAdapter(dataList,this)
+        myTikTokAdapter = TikTokRecyclerAdapter(requireContext(),dataList)
+
+       // myVideosAdapter = MyVideosAdapter(dataList,this)
         binding.myVideosRecyclerView.layoutManager = GridLayoutManager(requireContext(),3)
-        binding.myVideosRecyclerView.adapter = myVideosAdapter
+        binding.myVideosRecyclerView.adapter = myTikTokAdapter
+
+//        val snapHelper: SnapHelper = LinearSnapHelper()
+//        snapHelper.attachToRecyclerView(binding.myVideosRecyclerView)
+//
+//        scrollListener = object :RecyclerViewScrollListener(){
+//            override fun onItemIsFirstVisibleItem(index: Int) {
+//                if (index != -1){
+//                    PlayerViewAdapter.playIndexThenPausePreviousPlayer(index)
+//                }
+//            }
+//        }
+//    binding.myVideosRecyclerView.addOnScrollListener(scrollListener)
+
+        myTikTokAdapter.SetOnItemClickListener(object :TikTokRecyclerAdapter.OnItemClickListener{
+            override fun onItemClick(view: View?, position: Int, storiesData: StoriesData?) {
+
+                findNavController().navigate(
+                    ProfileFragmentDirections.actionNavigationMeToStoryViewFragment(storiesData!!)
+                )
+
+            }
+
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -103,7 +137,7 @@ class ProfileFragment : Fragment(),MyVideosClickListener {
 
                         if (!value.data.isNullOrEmpty()) {
                             val dataList = value.data
-                            myVideosAdapter.setData(dataList)
+                            myTikTokAdapter.updateList(dataList)
                             binding.lottieLoaderAnimation.visibility = View.GONE
                             binding.lottieNoInternetConnection.visibility = View.GONE
                         }
@@ -248,11 +282,9 @@ class ProfileFragment : Fragment(),MyVideosClickListener {
         changeStatusBarColor(requireActivity(),R.color.colorBlack)
     }
 
-    override fun onItemClicked(storiesData: StoriesData) {
-        findNavController().navigate(
-            ProfileFragmentDirections.actionNavigationMeToStoryViewFragment(storiesData)
-        )
+    override fun onPause() {
+        super.onPause()
+        PlayerViewAdapter.releaseAllPlayers()
     }
-
 
 }
