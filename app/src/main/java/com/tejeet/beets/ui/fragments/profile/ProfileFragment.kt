@@ -25,6 +25,7 @@ import com.tejeet.beets.data.constant.AppPreferences
 import com.tejeet.beets.data.modelDTO.StoriesData
 import com.tejeet.beets.databinding.FragmentProfileBinding
 import com.tejeet.beets.model.ResultData
+import com.tejeet.beets.ui.Settings.settingsActivity
 import com.tejeet.beets.ui.activities.main.viewmodel.MainViewModel
 import com.tejeet.beets.ui.fragments.profile.adapter.MyVideosAdapter
 import com.tejeet.beets.ui.fragments.profile.viewmodel.ProfileViewModel
@@ -85,6 +86,9 @@ class ProfileFragment : Fragment(),MyVideosClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.menuIcon.setOnClickListener {
+            startActivity(Intent(requireContext(),settingsActivity::class.java))
+        }
 
         if (AppPreferences.isLoggedIn.equals("YES")){
 

@@ -28,12 +28,7 @@ class MyMessagingService() : FirebaseMessagingService() {
         // Check if message contains a data payload.
         Log.d(TAG, "Message data payload: " + remoteMessage.data)
 
-        dislayNotification(remoteMessage.data.toString(), remoteMessage.from.toString() )
-
-
-
-        //Log.d(TAG, "Message Notification Body: " + remoteMessage.notification!!.body)
-
+        remoteMessage?.data?.get("title")?.let { dislayNotification("Manish Liked Your Post", it) }
 
 
     }
@@ -49,7 +44,7 @@ class MyMessagingService() : FirebaseMessagingService() {
             applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val GeneralChannel = NotificationChannel(
-                "beetsTejeet",
+                "General",
                 "General",
                 NotificationManager.IMPORTANCE_DEFAULT
             )

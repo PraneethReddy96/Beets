@@ -43,7 +43,7 @@
             android:layout_toLeftOf="@id/inboxBarCode"
             android:layout_toRightOf="@id/inboxPageSearchBtn"
             android:background="@drawable/rectangle"
-            android:hint="Hello, Masai School!"
+            android:hint="Search "
             android:maxLines="1"
             android:padding="@dimen/dp_5"
             android:textColorHint="@color/light_greyy"
