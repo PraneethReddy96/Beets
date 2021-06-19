@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.tejeet.beets.R
 import com.tejeet.beets.ui.discover.data.modelClass.DataItem
 import com.tejeet.beets.ui.discover.data.modelClass.Images
+import com.tejeet.beets.utils.Constants
 
 class euroAdapter(val dataItemList: MutableList<DataItem?>) : RecyclerView.Adapter<EuroViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EuroViewHolder {
@@ -18,7 +19,10 @@ class euroAdapter(val dataItemList: MutableList<DataItem?>) : RecyclerView.Adapt
 
     override fun onBindViewHolder(holder: EuroViewHolder, position: Int) {
 
-       Glide.with(holder.IvImage).asGif().load(dataItemList.get(position)?.images?.original?.url).into(holder.IvImage)
+       Glide.with(holder.IvImage).asGif()
+           .load(dataItemList.get(position)?.images?.original?.url)
+           .placeholder(Constants.getRandomDrawableColor())
+           .into(holder.IvImage)
 
     }
 

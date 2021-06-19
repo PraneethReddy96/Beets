@@ -1,5 +1,7 @@
 package com.tejeet.beets.ui.fragments.profile.adapter
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +12,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.tejeet.beets.R
 import com.tejeet.beets.data.modelDTO.StoriesData
 import com.tejeet.beets.ui.fragments.profile.MyVideosClickListener
+import com.tejeet.beets.utils.Constants.getRandomDrawableColor
+import kotlin.random.Random
 
 
 class MyVideosAdapter(var dataList: MutableList<StoriesData>,var myVideosClickListener: MyVideosClickListener)
@@ -24,13 +28,16 @@ class MyVideosAdapter(var dataList: MutableList<StoriesData>,var myVideosClickLi
 
     override fun onBindViewHolder(holder: MyVideosViewHolder, position: Int) {
 
+
+
+
         val requestOptions = RequestOptions()
         Glide
             .with(holder.myVideosContainer)
             .applyDefaultRequestOptions(requestOptions)
             .load(dataList[position].storyUrl)
             .into(holder.myVideosContainer)
-        Glide.with(holder.myVideosContainer).load(dataList[position].storyUrl).into(holder.myVideosContainer)
+        Glide.with(holder.myVideosContainer).load(dataList[position].storyUrl).placeholder(getRandomDrawableColor()).into(holder.myVideosContainer)
 
         holder.myVideosContainer.setOnClickListener {
             myVideosClickListener.onItemClicked(dataList[position])
@@ -54,8 +61,6 @@ class MyVideosAdapter(var dataList: MutableList<StoriesData>,var myVideosClickLi
         val myVideosContainer = itemView.findViewById<ImageView>(R.id.myVideosImage)
 
     }
-
-
 
 }
 
