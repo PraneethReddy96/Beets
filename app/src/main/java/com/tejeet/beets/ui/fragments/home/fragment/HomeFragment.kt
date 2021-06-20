@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -50,7 +51,6 @@ class HomeFragment : Fragment() {
                 is ResultData.Loading -> {
                     binding.lottieLoaderAnimation.visibility = View.VISIBLE
                     binding.lottieNoInternetConnection.visibility = View.GONE
-                    changeStatusBarColor(requireActivity(), R.color.colorBlack)
                     Log.d(TAG, "Loading")
                 }
                 is ResultData.Success -> {
@@ -60,7 +60,6 @@ class HomeFragment : Fragment() {
                         val dataList = value.data
                         storiesPagerAdapter = StoriesPagerAdapter(this, dataList)
                         binding.viewPagerStories.adapter = storiesPagerAdapter
-                        changeStatusBarColor(requireActivity(), R.color.transparent)
                         startPreCaching(dataList)
                     }
                 }
@@ -68,7 +67,6 @@ class HomeFragment : Fragment() {
                     showSnackBar(requireView(),value.nothing.toString())
                     binding.lottieLoaderAnimation.visibility = View.GONE
                     binding.lottieNoInternetConnection.visibility = View.VISIBLE
-                    changeStatusBarColor(requireActivity(), R.color.colorBlack)
                 }
             }
         })
@@ -91,6 +89,7 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+         activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
         changeStatusBarColor(requireActivity(), R.color.transparent)
     }
 

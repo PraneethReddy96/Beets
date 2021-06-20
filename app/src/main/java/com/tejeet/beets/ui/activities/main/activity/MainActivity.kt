@@ -40,9 +40,9 @@ class MainActivity: AppCompatActivity(), NavController.OnDestinationChangedListe
         when (destination.id) {
             R.id.navigation_home -> {
 
-                window.apply {
-                    statusBarColor = getColor(R.color.colorBlack)
-                }
+//                window.apply {
+//                    statusBarColor = getColor(R.color.colorBlack)
+//                }
 
                 val colorDark = ContextCompat.getColorStateList(
                     this,

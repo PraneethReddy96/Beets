@@ -26,7 +26,7 @@ class MyMessagingService() : FirebaseMessagingService() {
 
 
         // Check if message contains a data payload.
-        Log.d(TAG, "Message data payload: " + remoteMessage.data)
+        //Log.d(TAG, "Message data payload: " + remoteMessage.data)
 
         remoteMessage?.data?.get("title")?.let { dislayNotification("Manish Liked Your Post", it) }
 
