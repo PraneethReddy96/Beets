@@ -1,5 +1,6 @@
 package com.tejeet.beets.ui.story
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
@@ -74,13 +75,11 @@ class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
 
          storieData = arguments?.getParcelable(Constants.KEY_STORY_DATA)
 
+        binding.imageViewOptionLike.setBackgroundResource(R.drawable.ic_heart_icon)
+
         binding.imageViewOptionLike.setOnClickListener {
 
-            Log.d(TAG, "Liked Post ${storieData?.storyId}")
-            binding.imageViewOptionLike.setBackgroundResource(R.drawable.ic_heart_icon_liked)
-            binding.imageViewOptionLikeTitle.text = (storieData?.likesCount?.toInt()?.plus(1)).toString()
 
-            binding.imageViewOptionLikeTitle.text = "Liked"
         }
 
         binding.imageViewOptionLike.setOnClickListener {
@@ -89,6 +88,19 @@ class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
             val response = mainViewModel.likePost(storieData?.storyId.toString(), storieData?.likesCount.toString(), AppPreferences.userID.toString())
                 Log.d(TAG, "Like Response is ${response?.message}")
             }
+
+            Log.d(TAG, "Liked Post ${storieData?.storyId}")
+            binding.imageViewOptionLike.setBackgroundResource(R.drawable.ic_heart_icon_liked)
+            binding.imageViewOptionLikeTitle.text = (storieData?.likesCount?.toInt()?.plus(1)).toString()
+
+        }
+
+        binding.imageViewOptionShare.setOnClickListener {
+            val shareIntent = Intent()
+            shareIntent.action = Intent.ACTION_SEND
+            shareIntent.type="text/plain"
+            shareIntent.putExtra(Intent.EXTRA_TEXT,"I just found this interesting video $storyUrl");
+            startActivity(Intent.createChooser(shareIntent,"Share With"))
         }
 
         setData()
