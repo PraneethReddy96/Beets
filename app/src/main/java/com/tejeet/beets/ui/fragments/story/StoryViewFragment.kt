@@ -1,6 +1,7 @@
 package com.tejeet.beets.ui.story
 
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
@@ -49,6 +50,7 @@ class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
     private var cacheDataSourceFactory: CacheDataSourceFactory? = null
     private val simpleCache = MyApp.simpleCache
     private var toPlayVideoPosition: Int = -1
+    private var isPlaying = true;
 
     companion object {
         fun newInstance(storiesData: StoriesData) = StoryViewFragment()
@@ -110,6 +112,20 @@ class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.storyPlayPause.setOnClickListener {
+            if (isPlaying){
+                pauseVideo()
+                binding.storyPlayPause.setBackgroundResource(R.drawable.ic_baseline_play_circle_outline_24)
+                isPlaying = false
+            }
+            else{
+                playVideo()
+                binding.storyPlayPause.setBackgroundResource(Color.TRANSPARENT)
+                isPlaying = true
+            }
+
+        }
 
     }
 

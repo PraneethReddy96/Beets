@@ -89,8 +89,8 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-         activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        changeStatusBarColor(requireActivity(), R.color.transparent)
+//         activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+//        changeStatusBarColor(requireActivity(), R.color.transparent)
     }
 
     override fun onDestroyView() {
