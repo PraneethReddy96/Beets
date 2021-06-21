@@ -13,7 +13,7 @@ import com.tejeet.beets.databinding.FragmentHomeBinding
 class CommentsBottomSheet : BottomSheetDialogFragment() {
 
     val nothing = null
-    private var _binding: CommentsBottomSheetBinding? = nothing
+    private var _binding: CommentsBottomSheetBinding? = null
     private val binding get() = _binding!!
 
     companion object {
