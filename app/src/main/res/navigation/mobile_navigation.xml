@@ -69,4 +69,21 @@
         android:name="com.tejeet.beets.ui.fragments.inbox.InboxFragment"
         android:label="fragment_inbox"
         tools:layout="@layout/fragment_inbox" />
+    <fragment
+        android:id="@+id/commentsBottomSheet"
+        android:name="com.tejeet.beets.ui.BottomSheets.CommentsBottomSheet"
+        android:label="CommentsBottomSheet" >
+        <action
+            android:id="@+id/action_commentsBottomSheet_to_storyViewFragment"
+            app:destination="@id/storyViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/storyViewFragment"
+        android:name="com.tejeet.beets.ui.story.StoryViewFragment"
+        android:label="fragment_story_view"
+        tools:layout="@layout/fragment_story_view" >
+        <action
+            android:id="@+id/action_storyViewFragment_to_commentsBottomSheet"
+            app:destination="@id/commentsBottomSheet" />
+    </fragment>
 </navigation>

@@ -9,11 +9,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.res.ResourcesCompat
-import androidx.core.widget.ImageViewCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.navArgs
+import androidx.navigation.fragment.findNavController
 import com.google.android.exoplayer2.ExoPlaybackException
 import com.tejeet.beets.app.MyApp
 import com.tejeet.beets.ui.activities.main.viewmodel.MainViewModel
@@ -29,8 +27,7 @@ import com.tejeet.beets.R
 import com.tejeet.beets.data.constant.AppPreferences
 import com.tejeet.beets.data.modelDTO.StoriesData
 import com.tejeet.beets.databinding.FragmentStoryViewBinding
-import com.tejeet.beets.ui.binding_adapters.changeVideoLikedIcon
-import com.tejeet.beets.ui.fragments.upload.preview_video.PreviewFragmentArgs
+import com.tejeet.beets.ui.BottomSheets.CommentsBottomSheet
 import com.tejeet.beets.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -124,6 +121,12 @@ class StoryViewFragment : Fragment(R.layout.fragment_story_view) {
                 binding.storyPlayPause.setBackgroundResource(Color.TRANSPARENT)
                 isPlaying = true
             }
+
+        }
+
+        binding.imageViewOptionComment.setOnClickListener {
+
+            findNavController().navigate(R.id.action_storyViewFragment_to_commentsBottomSheet)
 
         }
 

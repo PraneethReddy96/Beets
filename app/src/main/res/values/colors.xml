@@ -22,4 +22,6 @@
     <color name="light_greyy">#98999b</color>
     <color name="cream">#efefee</color>
 
+    <color name="transperent_a">#0000</color>
+
 </resources>
